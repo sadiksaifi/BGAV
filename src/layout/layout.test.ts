@@ -1,7 +1,8 @@
 import { describe, expect, it } from "vitest";
+import { parseMatrixJobs } from "../github/parse";
 import { buildView } from "../model/view";
-import { graphFixture } from "../test/fixtures";
-import { type Box, layoutGraph } from "./layout";
+import { fixture, graphFixture } from "../test/fixtures";
+import { type Box, headerText, layoutGraph } from "./layout";
 
 describe("layoutGraph", () => {
   it("packs parallel siblings of a wide pipeline into bundles", async () => {
@@ -84,5 +85,57 @@ describe("layoutGraph", () => {
       expect(node.x + node.width).toBeLessThanOrEqual(parent.x + parent.width);
       expect(node.y + node.height).toBeLessThanOrEqual(parent.y + parent.height);
     }
+  });
+
+  it("starts every job without dependencies in the top row", async () => {
+    const run = graphFixture("spaceterm-graph.html");
+    const matrix = run.cards.find((c) => c.matrix);
+    if (!matrix) throw new Error("missing matrix");
+    const jobs = parseMatrixJobs(fixture("spaceterm-matrix-expanded.html"), matrix.id);
+    expect(jobs.length).toBe(10);
+    const view = buildView(run, {
+      collapsed: new Map(),
+      simplifyEdges: true,
+      matrixJobs: (id) => (id === matrix.id ? jobs : undefined),
+      matrixFailed: () => false,
+    });
+    const layout = await layoutGraph(view);
+    const byTitle = (title: string) => {
+      const node = [...layout.nodes.values()].find((n) => n.node.title === title);
+      if (!node) throw new Error(`missing ${title}`);
+      return node;
+    };
+
+    // Jobs that need nothing start the run, so they share the top row.
+    const top = Math.min(...[...layout.nodes.values()].map((n) => n.y));
+    for (const title of [
+      "Plan compatibility pairs",
+      "Validate release",
+      "Compile linux",
+      "Compile macos",
+    ]) {
+      expect(byTitle(title).y).toBeCloseTo(top);
+    }
+
+    // Jobs in the same layer as the tall matrix start at its top edge.
+    const matrixNode = layout.nodes.get(matrix.id);
+    expect(
+      byTitle("Verify final Core linux and its floor activation without secrets").y,
+    ).toBeCloseTo(matrixNode?.y ?? Number.NaN);
+  });
+
+  it("names an untitled group after the workflow calls of its jobs", () => {
+    const view = buildView(graphFixture("uv-graph.html"), {
+      collapsed: new Map(),
+      simplifyEdges: true,
+      matrixJobs: () => undefined,
+      matrixFailed: () => false,
+    });
+    const untitled = view.nodes.filter((n) => n.kind === "group" && !n.title);
+    const titles = untitled.map(headerText);
+    expect(titles).toContain("test-integration, test-system");
+    // With many callers, or inside a cluster, the job count is the title.
+    expect(titles).toContain("22 jobs");
+    expect(titles).toContain("2 jobs");
   });
 });

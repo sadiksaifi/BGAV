@@ -134,7 +134,10 @@ function header(node: ViewNode): HTMLElement {
     node.kind === "cluster"
       ? h("span", { class: "meta" }, plural(node.cardCount ?? 0, "card"))
       : null,
-    node.jobs.length > 1 ? h("span", { class: "meta" }, doneCount(node)) : null,
+    // An untitled group's title is already its job count.
+    node.jobs.length > 1 && doneCount(node) !== text
+      ? h("span", { class: "meta" }, doneCount(node))
+      : null,
   );
 }
 

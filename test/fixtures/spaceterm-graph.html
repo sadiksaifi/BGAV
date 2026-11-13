@@ -1,0 +1,1906 @@
+<div
+  role="region"
+  aria-label="Workflow run graph"
+  class="js-updatable-content js-socket-channel"
+  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial"
+>
+  <action-graph data-hpc>
+    <div
+      class="actions-fullwidth-module WorkflowGraph color-shadow-small tmp-mb-3 border rounded color-bg-inset overflow-hidden position-relative p-2 border-top-0 border-md-top"
+      style="min-height: 200px; max-height: 600px"
+      tabindex="0"
+      data-target="action-graph.canvas"
+      data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"any","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+      data-hydro-click-hmac="754842e7179c67850e60d9eb93cecf8d6c22ef6727cff1a2fd68f9d06347b68e"
+    >
+      <div
+        class="d-flex flex-items-center flex-justify-between position-relative p-md-1 pb-md-2"
+        style="touch-action: none; user-select: none; -webkit-user-select: none"
+      >
+        <div class="p-2 color-bg-inset rounded position-relative" style="z-index: 1">
+          <h2 class="d-flex flex-items-center h4">
+            <a
+              class="Link--primary no-underline"
+              href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/workflow"
+              >release.yml</a
+            >
+          </h2>
+          <div class="text-small color-fg-muted">on: workflow_dispatch</div>
+        </div>
+      </div>
+
+      <div
+        class="width-full height-full position-relative px-2 mx-md-1"
+        style="touch-action: none; user-select: none; transform-origin: left top"
+        data-action="selectstart:action-graph#cancelEvent"
+      >
+        <div
+          class="visual-graph"
+          data-target="action-graph.visualGraph"
+          data-x="0"
+          data-y="0"
+          style="opacity: 0"
+        >
+          <div
+            class="d-inline-flex flex-row position-relative"
+            style="transform-origin: left top"
+            data-target="action-graph.stages"
+          >
+            <svg
+              class="WorkflowConnectors position-absolute top-0 left-0"
+              data-targets="action-graph.connectorLines"
+              width="900"
+              height="100%"
+              aria-hidden="true"
+              fill="none"
+            >
+              <path
+                class="WorkflowConnector"
+                data-from="group-_compatibility_publish"
+                data-to="group-compatibility-plan_-compatibility-_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-_compatibility_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-_core-linux_desktop-linux"
+                data-to="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-_core-linux_desktop-linux"
+                data-to="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-_core-macos_desktop-macos"
+                data-to="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-_core-macos_desktop-macos"
+                data-to="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compatibility-plan_-compatibility-_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-desktop-linux_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-desktop-macos_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-core-macos_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-desktop-linux_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-desktop-macos_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-core-linux_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                data-to="group-desktop-linux_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                data-to="group-desktop-macos_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-core-macos_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-desktop-linux_core-macos_core-linux_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-desktop-macos_core-macos_core-linux_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+            </svg>
+
+            <svg
+              class="WorkflowConnectors position-absolute top-0 left-0"
+              data-target="action-graph.connectorLineHighlights"
+              data-targets="action-graph.connectorLines"
+              width="900"
+              height="100%"
+              aria-hidden="true"
+              fill="none"
+            >
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-_compatibility_publish"
+                data-to="group-compatibility-plan_-compatibility-_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-_compatibility_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-_core-linux_desktop-linux"
+                data-to="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-_core-linux_desktop-linux"
+                data-to="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-_core-macos_desktop-macos"
+                data-to="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-_core-macos_desktop-macos"
+                data-to="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compatibility-plan_-compatibility-_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-desktop-linux_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-desktop-macos_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-core-macos_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-desktop-linux_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-desktop-macos_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-core-linux_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                data-to="group-desktop-linux_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                data-to="group-desktop-macos_core-macos_core-linux_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-core-macos_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-desktop-linux_core-macos_core-linux_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-desktop-macos_core-macos_core-linux_publish"
+                data-to="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+            </svg>
+
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-_compatibility_publish"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="dfe54676-76d8-5596-9cfc-285ad14e7baf"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/compatibility-plan"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="compatibility-plan"
+                  data-group-id="group-_compatibility_publish"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-compatibility-plan"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131777486634"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Plan compatibility pairs
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          12s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-ec4cbc1f-9272-4bc1-b7e6-5e95b523ad5c"
+                    for="workflow-job-name-compatibility-plan"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Plan compatibility pairs</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-_core-linux_desktop-linux"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="89b6c732-33c1-5d3c-a9b6-fa43a3278814"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/compile-linux"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="compile-linux"
+                  data-group-id="group-_core-linux_desktop-linux"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-compile-linux"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131777486320"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Compile linux
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          7m 44s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-fdd3ed23-23b9-489f-991d-0bf6b6b8fdd5"
+                    for="workflow-job-name-compile-linux"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Compile linux</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-_core-macos_desktop-macos"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="ebb50ad5-eb23-5fc3-8648-cd69440ede17"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/compile-macos"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="compile-macos"
+                  data-group-id="group-_core-macos_desktop-macos"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-compile-macos"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131777486669"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Compile macos
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          13m 5s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-4301e71e-8a8d-42c9-925e-f3527176dd89"
+                    for="workflow-job-name-compile-macos"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Compile macos</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-_publish"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="4978da2e-4c1d-5904-999b-fe563685674b"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/validate"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="validate"
+                  data-group-id="group-_publish"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-validate"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131777486621"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Validate release
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          9m 34s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-96f13ebe-d103-49d7-9b40-88893ddf268f"
+                    for="workflow-job-name-validate"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Validate release</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-compatibility-plan_-compatibility-_publish"
+                class="WorkflowCard has-title position-relative rounded-2 border tmp-mb-6 tmp-p-3 WorkflowCard-group"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <div
+                  class="WorkflowCard-heading position-absolute text-small text-semibold pt-1 tmp-px-3 rounded-top-2"
+                >
+                  <span
+                    class="WorkflowCard-heading--content position-relative css-truncate css-truncate-target"
+                    style="top: 3px; max-width: 190px"
+                  >
+                    Matrix: compatibility
+                  </span>
+                </div>
+
+                <div
+                  class="js-updatable-content js-socket-channel d-flex flex-row flex-items-center flex-auto width-full rounded-2 js-graph-matrix"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/matrix/Y29tcGF0aWJpbGl0eS1wbGFufC1jb21wYXRpYmlsaXR5LXxwdWJsaXNo?attempt=1&amp;expanded=false"
+                  data-targets="action-graph.matrices"
+                  data-job-id="compatibility"
+                  data-group-id="group-compatibility-plan_-compatibility-_publish"
+                >
+                  <button
+                    type="button"
+                    data-update-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/matrix/Y29tcGF0aWJpbGl0eS1wbGFufC1jb21wYXRpYmlsaXR5LXxwdWJsaXNo?attempt=1&amp;expanded=true"
+                    data-action="click:action-graph#expandMatrix"
+                    class="btn-link text-small no-underline color-fg-muted d-flex flex-column flex-items-start WorkflowJob width-full rounded-2"
+                  >
+                    <div class="d-flex flex-items-center MatrixComponent-collapse--title f5">
+                      <div>
+                        <svg
+                          data-component="Octicon"
+                          width="16"
+                          height="16"
+                          class="octicon octicon-check-circle-fill color-fg-success"
+                          aria-label="completed successfully: "
+                          viewBox="0 0 16 16"
+                          version="1.1"
+                          role="img"
+                        >
+                          <path
+                            d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                          ></path>
+                        </svg>
+                      </div>
+
+                      <div
+                        class="flex-self-baseline flex-1 pl-2 no-wrap text-semibold color-fg-default"
+                      >
+                        10 jobs completed
+                      </div>
+                    </div>
+
+                    <div class="mt-2 mb-n1">Show all jobs</div>
+                  </button>
+                </div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="e3459b66-fd9c-5c1c-bdd5-c5793dba66d6"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/core-linux"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="core-linux"
+                  data-group-id="group-compile-linux_env_release_desktop-linux_desktop-macos_publish_verify-core-linux_verify-desktop-linux_verify-desktop-macos"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-core-linux"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131780754627"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Sign Core linux
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          27s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-79fd154b-ef5e-4c32-a1f8-b58d40566b3d"
+                    for="workflow-job-name-core-linux"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Sign Core linux</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="2dce915a-6bfc-5357-b916-8b2d4dffc351"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/core-macos"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="core-macos"
+                  data-group-id="group-compile-macos_env_release_desktop-linux_desktop-macos_publish_verify-core-macos_verify-desktop-linux_verify-desktop-macos"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-core-macos"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131783070245"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Sign Core macos
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          1m 38s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-a47af4c3-465b-4939-a350-2734b9590feb"
+                    for="workflow-job-name-core-macos"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Sign Core macos</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-core-linux_publish"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="162235c8-7837-5fce-977a-1908184f6854"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/verify-core-linux"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="verify-core-linux"
+                  data-group-id="group-core-linux_publish"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-verify-core-linux"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131780974333"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Verify final Core linux and its floor activation without secrets
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          26s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-c267928a-cd35-4c19-b199-cccff1548f03"
+                    for="workflow-job-name-verify-core-linux"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Verify final Core linux and its floor activation without secrets</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="a81b939f-a03f-52c7-8b23-04fe74e68d7b"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/desktop-linux"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="desktop-linux"
+                  data-group-id="group-compile-linux_core-macos_core-linux_env_release_publish_verify-desktop-linux"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-desktop-linux"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131783785782"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Package desktop linux
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          40s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-a2ccf462-b998-418b-bfcc-b89ea0abfc28"
+                    for="workflow-job-name-desktop-linux"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Package desktop linux</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="ad7bc5da-9f67-54c2-ab3e-840da4fdffe7"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/desktop-macos"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="desktop-macos"
+                  data-group-id="group-compile-macos_core-macos_core-linux_env_release_publish_verify-desktop-macos"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-desktop-macos"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131783785803"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Package desktop macos
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          3m 25s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-186a8b89-1d37-4a33-bc17-501ddd6e70c6"
+                    for="workflow-job-name-desktop-macos"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Package desktop macos</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-core-macos_publish"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="fae2f0a9-3b09-5409-a370-d1409c50b593"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/verify-core-macos"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="verify-core-macos"
+                  data-group-id="group-core-macos_publish"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-verify-core-macos"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131783785885"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Verify final Core macos without secrets
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          36s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-56286f70-c2c3-47ff-8d26-fdb11308c2b8"
+                    for="workflow-job-name-verify-core-macos"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Verify final Core macos without secrets</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-desktop-linux_core-macos_core-linux_publish"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="dd7ef6f0-3d63-5c4d-865e-7e93abd7eadb"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/verify-desktop-linux"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="verify-desktop-linux"
+                  data-group-id="group-desktop-linux_core-macos_core-linux_publish"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-verify-desktop-linux"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131784102631"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Verify final desktop linux without secrets
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          35s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-df690140-7d68-43b2-8a98-49906ea501b9"
+                    for="workflow-job-name-verify-desktop-linux"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Verify final desktop linux without secrets</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-desktop-macos_core-macos_core-linux_publish"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="160a84d2-1c1c-5406-b5bc-195bf717de9c"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/verify-desktop-macos"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="verify-desktop-macos"
+                  data-group-id="group-desktop-macos_core-macos_core-linux_publish"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-verify-desktop-macos"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131785283945"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Verify final desktop macos without secrets
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          2m 53s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-2abd09ea-a5ae-480c-85f0-3113c62ceb7a"
+                    for="workflow-job-name-verify-desktop-macos"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Verify final desktop macos without secrets</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="SpaceTerm"
+                  data-external-id="06369fe8-3527-5568-82b7-96817d2ccf0b"
+                  data-concluded="true"
+                  data-url="/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph/job/publish"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="publish"
+                  data-group-id="group-validate_compatibility-plan_compatibility_core-macos_core-linux_verify-core-macos_verify-core-linux_desktop-macos_desktop-linux_verify-desktop-macos_verify-desktop-linux_env_release_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-publish"
+                    href="/sadiksaifi/SpaceTerm/actions/runs/43393100380/job/131786548534"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"job","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+                    data-hydro-click-hmac="e39cdfcb9943392b4af375c02c02422c74cda2b3f3b4953dceeeb351d5b9a0dc"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path
+                              d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"
+                            ></path>
+                          </svg>
+                        </div>
+
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Assemble and publish
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          1m 9s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-3794de76-1ad8-439c-8e46-2665f2a69764"
+                    for="workflow-job-name-publish"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Assemble and publish</tool-tip
+                  >
+                </streaming-graph-job>
+
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            aria-hidden="true"
+            class="position-absolute text-small"
+            style="top: -200px; left: -4000px"
+          >
+            <p>Oh hello! Nice to see you.</p>
+            <p>
+              Made with ❤️ by
+              <a class="Link--inTextBlock" href="https://actions.github.io/humans.txt" tabindex="-1"
+                >humans.txt</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="position-absolute bottom-0 right-0 tmp-mr-3 tmp-mb-3 pr-1 pb-1 d-flex gap-2">
+        <button
+          data-action="click:action-graph#fit"
+          data-target="action-graph.zoomFit"
+          data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"screen_full","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+          data-hydro-click-hmac="e98c7932502b27b4befc98369536262ad4e71de2fd14da19c20e6f0e64692764"
+          id="icon-button-40e933a8-3d4a-4398-8699-25fbf41a403e"
+          aria-labelledby="tooltip-7601df94-00c0-4ded-ab80-f356cb92a377"
+          type="button"
+          disabled="disabled"
+          data-view-component="true"
+          class="Button Button--iconOnly Button--secondary Button--small"
+        >
+          <svg
+            aria-hidden="true"
+            data-component="Octicon"
+            height="16"
+            viewBox="0 0 16 16"
+            version="1.1"
+            width="16"
+            data-view-component="true"
+            class="octicon octicon-screen-full Button-visual"
+          >
+            <path
+              d="M1.75 10a.75.75 0 0 1 .75.75v2.5c0 .138.112.25.25.25h2.5a.75.75 0 0 1 0 1.5h-2.5A1.75 1.75 0 0 1 1 13.25v-2.5a.75.75 0 0 1 .75-.75Zm12.5 0a.75.75 0 0 1 .75.75v2.5A1.75 1.75 0 0 1 13.25 15h-2.5a.75.75 0 0 1 0-1.5h2.5a.25.25 0 0 0 .25-.25v-2.5a.75.75 0 0 1 .75-.75ZM2.75 2.5a.25.25 0 0 0-.25.25v2.5a.75.75 0 0 1-1.5 0v-2.5C1 1.784 1.784 1 2.75 1h2.5a.75.75 0 0 1 0 1.5ZM10 1.75a.75.75 0 0 1 .75-.75h2.5c.966 0 1.75.784 1.75 1.75v2.5a.75.75 0 0 1-1.5 0v-2.5a.25.25 0 0 0-.25-.25h-2.5a.75.75 0 0 1-.75-.75Z"
+            ></path>
+          </svg></button
+        ><tool-tip
+          id="tooltip-7601df94-00c0-4ded-ab80-f356cb92a377"
+          for="icon-button-40e933a8-3d4a-4398-8699-25fbf41a403e"
+          popover="manual"
+          data-direction="s"
+          data-type="label"
+          data-view-component="true"
+          class="sr-only position-absolute"
+          >Fit to window</tool-tip
+        >
+
+        <div data-view-component="true" class="ButtonGroup">
+          <div>
+            <button
+              data-action="click:action-graph#out"
+              data-target="action-graph.zoomOut"
+              data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"zoom_out","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+              data-hydro-click-hmac="7ac41da45c7c09feed55a6b738ca924432d62c38065542eefa96c18f45b16477"
+              id="icon-button-6babcdb1-b096-4ef5-8836-fec7f8500784"
+              aria-labelledby="tooltip-3447e04a-d65a-49e8-af93-01b8c87e79d5"
+              type="button"
+              disabled="disabled"
+              data-view-component="true"
+              class="Button Button--iconOnly Button--secondary Button--small"
+            >
+              <svg
+                aria-hidden="true"
+                data-component="Octicon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                data-view-component="true"
+                class="octicon octicon-dash Button-visual"
+              >
+                <path
+                  d="M2 7.75A.75.75 0 0 1 2.75 7h10a.75.75 0 0 1 0 1.5h-10A.75.75 0 0 1 2 7.75Z"
+                ></path>
+              </svg></button
+            ><tool-tip
+              id="tooltip-3447e04a-d65a-49e8-af93-01b8c87e79d5"
+              for="icon-button-6babcdb1-b096-4ef5-8836-fec7f8500784"
+              popover="manual"
+              data-direction="s"
+              data-type="label"
+              data-view-component="true"
+              class="sr-only position-absolute"
+              >Zoom out</tool-tip
+            >
+          </div>
+          <div>
+            <button
+              data-action="click:action-graph#in"
+              data-target="action-graph.zoomIn"
+              data-hydro-click='{"event_type":"actions.execution_graph_click","payload":{"repository_id":1322338342,"session_id":"","click_area":"zoom_in","originating_url":"https://github.com/sadiksaifi/SpaceTerm/actions/runs/43393100380/graph_partial","user_id":null}}'
+              data-hydro-click-hmac="77da3bb3cf0fa3e13ec16d8293becc311da965bebcf0a1c1b8389868612986de"
+              id="icon-button-2eee017a-af91-4e3b-a0f9-e93efa88ce1e"
+              aria-labelledby="tooltip-e8300dcc-5210-49a9-96bf-68d4e92ad71f"
+              type="button"
+              disabled="disabled"
+              data-view-component="true"
+              class="Button Button--iconOnly Button--secondary Button--small"
+            >
+              <svg
+                aria-hidden="true"
+                data-component="Octicon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                data-view-component="true"
+                class="octicon octicon-plus Button-visual"
+              >
+                <path
+                  d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"
+                ></path>
+              </svg></button
+            ><tool-tip
+              id="tooltip-e8300dcc-5210-49a9-96bf-68d4e92ad71f"
+              for="icon-button-2eee017a-af91-4e3b-a0f9-e93efa88ce1e"
+              popover="manual"
+              data-direction="s"
+              data-type="label"
+              data-view-component="true"
+              class="sr-only position-absolute"
+              >Zoom in</tool-tip
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </action-graph>
+</div>

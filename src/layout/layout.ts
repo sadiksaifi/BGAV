@@ -115,8 +115,20 @@ export function hasHeader(node: ViewNode): boolean {
   return node.title !== "" || node.jobs.length > COLLAPSE_THRESHOLD;
 }
 
+/**
+ * Names a group that GitHub shows without a heading after the workflow calls
+ * its jobs come from, when there are at most three. Inside a cluster, the
+ * cluster title already names the call.
+ */
+function callerTitle(node: ViewNode): string | undefined {
+  if (node.parent) return undefined;
+  const callers = new Set(node.jobs.map((j) => j.path[0]));
+  if (callers.size > 3 || callers.has(undefined)) return undefined;
+  return [...callers].join(", ");
+}
+
 export function headerText(node: ViewNode): string {
-  const title = node.title || `${node.jobs.length} jobs`;
+  const title = node.title || callerTitle(node) || `${node.jobs.length} jobs`;
   const full = node.subtitle ? `${node.subtitle} / ${title}` : title;
   return node.kind === "matrix" && !node.collapsed ? `Matrix: ${full}` : full;
 }
@@ -292,6 +304,18 @@ const ROOT_OPTIONS: LayoutOptions = {
   "elk.padding": "[top=24,left=24,bottom=24,right=24]",
 };
 
+/**
+ * Nodes sit at the top of their layer. Centered nodes float in the middle of a
+ * layer that a tall matrix stretches, which leaves gaps above and below them.
+ */
+const NODE_OPTIONS: LayoutOptions = { "elk.alignment": "TOP" };
+
+/** Jobs that need nothing start the run, so they all sit in the top layer. */
+const SOURCE_OPTIONS: LayoutOptions = {
+  ...NODE_OPTIONS,
+  "elk.layered.layering.layerConstraint": "FIRST",
+};
+
 const CLUSTER_OPTIONS: LayoutOptions = {
   "elk.padding": `[top=${SIZE.clusterHeader + 8},left=${SIZE.clusterPad},bottom=${SIZE.clusterPad},right=${SIZE.clusterPad}]`,
 };
@@ -354,16 +378,29 @@ export async function layoutGraph(view: ViewGraph): Promise<Layout> {
     }
   };
 
+  const hasIncoming = new Set(view.edges.map((e) => e.to));
+  const options = (id: string) => (hasIncoming.has(id) ? NODE_OPTIONS : SOURCE_OPTIONS);
   for (const node of view.nodes) {
     const bundle = bundleOf.get(node.id);
     if (bundle) {
       if (addedBundles.has(bundle.id)) continue;
       addedBundles.add(bundle.id);
-      add({ id: bundle.id, width: bundle.width, height: bundle.height }, bundle.parent);
+      add(
+        {
+          id: bundle.id,
+          width: bundle.width,
+          height: bundle.height,
+          layoutOptions: options(node.id),
+        },
+        bundle.parent,
+      );
       continue;
     }
     const size = sizes.get(node.id) as Metrics;
-    add({ id: node.id, width: size.width, height: size.height }, node.parent);
+    add(
+      { id: node.id, width: size.width, height: size.height, layoutOptions: options(node.id) },
+      node.parent,
+    );
   }
 
   // Edges between layout boxes, with the node edges each one stands for.
