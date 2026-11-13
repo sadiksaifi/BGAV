@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Better GitHub Actions Visualizer: a readable top-down graph for GitHub Actions runs.",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",

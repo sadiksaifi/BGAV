@@ -30,3 +30,7 @@ Then load the extension in Chrome:
 `pnpm dev` rebuilds on save. `pnpm build` makes a production build in `dist`.
 
 Before you push, run `pnpm check`. It typechecks, lints with oxlint, checks formatting with oxfmt, and runs the tests.
+
+## License
+
+[MIT](LICENSE)
