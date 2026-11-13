@@ -12,5 +12,13 @@
     "browser": true,
     "webextensions": true
   },
-  "ignorePatterns": ["dist/**"]
+  "ignorePatterns": ["dist/**"],
+  "overrides": [
+    {
+      "files": ["scripts/**"],
+      "rules": {
+        "no-await-in-loop": "off"
+      }
+    }
+  ]
 }

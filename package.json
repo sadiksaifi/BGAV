@@ -13,13 +13,24 @@
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "test": "vitest run",
-    "check": "pnpm typecheck && pnpm lint && pnpm fmt:check && pnpm test"
+    "check": "pnpm typecheck && pnpm lint && pnpm fmt:check && pnpm test",
+    "preview": "node scripts/preview.ts",
+    "gen:octicons": "node scripts/gen-octicons.ts && oxfmt src/view/octicons.ts",
+    "gen:icons": "node scripts/gen-icons.ts",
+    "zip": "pnpm build && node scripts/zip.ts"
+  },
+  "dependencies": {
+    "elkjs": "^0.12.1"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "^3.0.0",
+    "@primer/octicons": "^19.42.0",
     "@types/chrome": "^0.3.7",
+    "@types/node": "^26.6.6",
+    "happy-dom": "^21.0.4",
     "oxfmt": "^0.78.0",
     "oxlint": "^1.93.0",
+    "playwright": "^1.65.0",
     "typescript": "^7.0.2",
     "vite": "^8.3.8",
     "vitest": "^5.1.0"

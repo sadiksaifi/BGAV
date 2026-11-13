@@ -1,0 +1,476 @@
+<div
+  role="region"
+  aria-label="Workflow run graph"
+  class="js-updatable-content js-socket-channel"
+  data-url="/rust-lang/rust/actions/runs/43396366618/graph_partial"
+>
+  <action-graph data-hpc>
+    <div
+      class="actions-fullwidth-module WorkflowGraph color-shadow-small tmp-mb-3 border rounded color-bg-inset overflow-hidden position-relative p-2 border-top-0 border-md-top"
+      style="min-height: 200px; max-height: 600px"
+      tabindex="0"
+      data-target="action-graph.canvas"
+    >
+      <div
+        class="d-flex flex-items-center flex-justify-between position-relative p-md-1 pb-md-2"
+        style="touch-action: none; user-select: none; -webkit-user-select: none"
+      >
+        <div class="p-2 color-bg-inset rounded position-relative" style="z-index: 1">
+          <h2 class="d-flex flex-items-center h4">
+            <a
+              class="Link--primary no-underline"
+              href="/rust-lang/rust/actions/runs/43396366618/workflow"
+              >ci.yml</a
+            >
+          </h2>
+          <div class="text-small color-fg-muted">on: pull_request</div>
+        </div>
+      </div>
+      <div
+        class="width-full height-full position-relative px-2 mx-md-1"
+        style="touch-action: none; user-select: none; transform-origin: left top"
+        data-action="selectstart:action-graph#cancelEvent"
+      >
+        <div
+          class="visual-graph"
+          data-target="action-graph.visualGraph"
+          data-x="0"
+          data-y="0"
+          style="opacity: 0"
+        >
+          <div
+            class="d-inline-flex flex-row position-relative"
+            style="transform-origin: left top"
+            data-target="action-graph.stages"
+          >
+            <svg
+              class="WorkflowConnectors position-absolute top-0 left-0"
+              data-targets="action-graph.connectorLines"
+              width="900"
+              height="100%"
+              aria-hidden="true"
+              fill="none"
+            >
+              <path
+                class="WorkflowConnector"
+                data-from="group-_job_outcome"
+                data-to="group-calculate_matrix_job_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-_job_outcome"
+                data-to="group-calculate_matrix_-job-_outcome"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-calculate_matrix_-job-_outcome"
+                data-to="group-calculate_matrix_job_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+            </svg>
+            <svg
+              class="WorkflowConnectors position-absolute top-0 left-0"
+              data-target="action-graph.connectorLineHighlights"
+              data-targets="action-graph.connectorLines"
+              width="900"
+              height="100%"
+              aria-hidden="true"
+              fill="none"
+            >
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-_job_outcome"
+                data-to="group-calculate_matrix_job_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-_job_outcome"
+                data-to="group-calculate_matrix_-job-_outcome"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-calculate_matrix_-job-_outcome"
+                data-to="group-calculate_matrix_job_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+            </svg>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-_job_outcome"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="rust"
+                  data-external-id="767b8b8d-5167-5bc8-9218-e9a4856ee8b9"
+                  data-concluded="true"
+                  data-url="/rust-lang/rust/actions/runs/43396366618/graph/job/calculate_matrix"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="calculate_matrix"
+                  data-group-id="group-_job_outcome"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-calculate_matrix"
+                    href="/rust-lang/rust/actions/runs/43396366618/job/131788257529"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Calculate job matrix
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          39s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-d1a9e24b-82d1-45a8-a2bd-3c2604d38106"
+                    for="workflow-job-name-calculate_matrix"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Calculate job matrix</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-calculate_matrix_-job-_outcome"
+                class="WorkflowCard has-title position-relative rounded-2 border tmp-mb-6 tmp-p-3 WorkflowCard-group"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <div
+                  class="WorkflowCard-heading position-absolute text-small text-semibold pt-1 tmp-px-3 rounded-top-2"
+                >
+                  <span
+                    class="WorkflowCard-heading--content position-relative css-truncate css-truncate-target"
+                    style="top: 3px; max-width: 190px"
+                  >
+                    Matrix: job
+                  </span>
+                </div>
+                <div
+                  class="js-updatable-content js-socket-channel d-flex flex-row flex-items-center flex-auto width-full rounded-2 js-graph-matrix"
+                  data-url="/rust-lang/rust/actions/runs/43396366618/graph/matrix/Y2FsY3VsYXRlX21hdHJpeHwtam9iLXxvdXRjb21l?attempt=1&amp;expanded=false"
+                  data-targets="action-graph.matrices"
+                  data-job-id="job"
+                  data-group-id="group-calculate_matrix_-job-_outcome"
+                >
+                  <button
+                    type="button"
+                    data-update-url="/rust-lang/rust/actions/runs/43396366618/graph/matrix/Y2FsY3VsYXRlX21hdHJpeHwtam9iLXxvdXRjb21l?attempt=1&amp;expanded=true"
+                    data-action="click:action-graph#expandMatrix"
+                    class="btn-link text-small no-underline color-fg-muted d-flex flex-column flex-items-start WorkflowJob width-full rounded-2"
+                  >
+                    <div class="d-flex flex-items-center MatrixComponent-collapse--title f5">
+                      <div>
+                        <div style="height: 16px; width: 16px">
+                          <svg
+                            aria-label="currently running: "
+                            width="100%"
+                            height="100%"
+                            fill="none"
+                            viewBox="0 0 16 16"
+                            class="anim-rotate"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill="none"
+                              stroke="var(--fgColor-attention)"
+                              stroke-width="2"
+                              d=""
+                              opacity=".5"
+                            />
+                            <path
+                              fill="var(--fgColor-attention)"
+                              fill-rule="evenodd"
+                              d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"
+                              clip-rule="evenodd"
+                            />
+                            <path
+                              fill="var(--fgColor-attention)"
+                              d="M14 8a6 6 0 0 0-6-6V0a8 8 0 0 1 8 8h-2Z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div
+                        class="flex-self-baseline flex-1 pl-2 no-wrap text-semibold color-fg-default"
+                      >
+                        0/11 jobs completed
+                      </div>
+                    </div>
+                    <div class="mt-2 mb-n1">Show all jobs</div>
+                  </button>
+                </div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-calculate_matrix_job_"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="rust"
+                  data-url="/rust-lang/rust/actions/runs/43396366618/graph/job/outcome"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="outcome"
+                  data-group-id="group-calculate_matrix_job_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-outcome"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <svg
+                          aria-hidden="true"
+                          data-component="Octicon"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          version="1.1"
+                          width="16"
+                          data-view-component="true"
+                          class="octicon octicon-circle color-fg-muted"
+                        >
+                          <path d=""></path>
+                        </svg>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-muted pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            publish toolstate
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-faa8c8f7-2e5b-4032-9113-7669c2ad582d"
+                    for="workflow-job-name-outcome"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >publish toolstate</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            class="position-absolute text-small"
+            style="top: -200px; left: -4000px"
+          >
+            <p>Oh hello! Nice to see you.</p>
+            <p>
+              Made with ❤️ by
+              <a class="Link--inTextBlock" href="https://actions.github.io/humans.txt" tabindex="-1"
+                >humans.txt</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="position-absolute bottom-0 right-0 tmp-mr-3 tmp-mb-3 pr-1 pb-1 d-flex gap-2">
+        <button
+          data-action="click:action-graph#fit"
+          data-target="action-graph.zoomFit"
+          id="icon-button-4c972a33-3531-4a6e-ac0f-450e3d3b83c4"
+          aria-labelledby="tooltip-4f675b61-0727-4bd8-a032-96d2a1151fba"
+          type="button"
+          disabled="disabled"
+          data-view-component="true"
+          class="Button Button--iconOnly Button--secondary Button--small"
+        >
+          <svg
+            aria-hidden="true"
+            data-component="Octicon"
+            height="16"
+            viewBox="0 0 16 16"
+            version="1.1"
+            width="16"
+            data-view-component="true"
+            class="octicon octicon-screen-full Button-visual"
+          >
+            <path d=""></path>
+          </svg></button
+        ><tool-tip
+          id="tooltip-4f675b61-0727-4bd8-a032-96d2a1151fba"
+          for="icon-button-4c972a33-3531-4a6e-ac0f-450e3d3b83c4"
+          popover="manual"
+          data-direction="s"
+          data-type="label"
+          data-view-component="true"
+          class="sr-only position-absolute"
+          >Fit to window</tool-tip
+        >
+        <div data-view-component="true" class="ButtonGroup">
+          <div>
+            <button
+              data-action="click:action-graph#out"
+              data-target="action-graph.zoomOut"
+              id="icon-button-d7fceb60-a103-4aa4-a699-5ab49e6d3273"
+              aria-labelledby="tooltip-391601a0-b6c9-4beb-ac11-1f63137c8f28"
+              type="button"
+              disabled="disabled"
+              data-view-component="true"
+              class="Button Button--iconOnly Button--secondary Button--small"
+            >
+              <svg
+                aria-hidden="true"
+                data-component="Octicon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                data-view-component="true"
+                class="octicon octicon-dash Button-visual"
+              >
+                <path d=""></path>
+              </svg></button
+            ><tool-tip
+              id="tooltip-391601a0-b6c9-4beb-ac11-1f63137c8f28"
+              for="icon-button-d7fceb60-a103-4aa4-a699-5ab49e6d3273"
+              popover="manual"
+              data-direction="s"
+              data-type="label"
+              data-view-component="true"
+              class="sr-only position-absolute"
+              >Zoom out</tool-tip
+            >
+          </div>
+          <div>
+            <button
+              data-action="click:action-graph#in"
+              data-target="action-graph.zoomIn"
+              id="icon-button-2b3ed01d-0de2-4f8d-8c37-beb8a9057c2b"
+              aria-labelledby="tooltip-3ad2ba50-2650-4991-bcba-1e88c40ba9e1"
+              type="button"
+              disabled="disabled"
+              data-view-component="true"
+              class="Button Button--iconOnly Button--secondary Button--small"
+            >
+              <svg
+                aria-hidden="true"
+                data-component="Octicon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                data-view-component="true"
+                class="octicon octicon-plus Button-visual"
+              >
+                <path d=""></path>
+              </svg></button
+            ><tool-tip
+              id="tooltip-3ad2ba50-2650-4991-bcba-1e88c40ba9e1"
+              for="icon-button-2b3ed01d-0de2-4f8d-8c37-beb8a9057c2b"
+              popover="manual"
+              data-direction="s"
+              data-type="label"
+              data-view-component="true"
+              class="sr-only position-absolute"
+              >Zoom in</tool-tip
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </action-graph>
+</div>

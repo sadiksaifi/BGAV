@@ -1,0 +1,3596 @@
+<div
+  role="region"
+  aria-label="Workflow run graph"
+  class="js-updatable-content js-socket-channel"
+  data-url="/astral-sh/ruff/actions/runs/43395527723/graph_partial"
+>
+  <action-graph data-hpc>
+    <div
+      class="actions-fullwidth-module WorkflowGraph color-shadow-small tmp-mb-3 border rounded color-bg-inset overflow-hidden position-relative p-2 border-top-0 border-md-top"
+      style="min-height: 200px; max-height: 600px"
+      tabindex="0"
+      data-target="action-graph.canvas"
+    >
+      <div
+        class="d-flex flex-items-center flex-justify-between position-relative p-md-1 pb-md-2"
+        style="touch-action: none; user-select: none; -webkit-user-select: none"
+      >
+        <div class="p-2 color-bg-inset rounded position-relative" style="z-index: 1">
+          <h2 class="d-flex flex-items-center h4">
+            <a
+              class="Link--primary no-underline"
+              href="/astral-sh/ruff/actions/runs/43395527723/workflow"
+              >ci.yaml</a
+            >
+          </h2>
+          <div class="text-small color-fg-muted">on: pull_request</div>
+        </div>
+      </div>
+      <div
+        class="width-full height-full position-relative px-2 mx-md-1"
+        style="touch-action: none; user-select: none; transform-origin: left top"
+        data-action="selectstart:action-graph#cancelEvent"
+      >
+        <div
+          class="visual-graph"
+          data-target="action-graph.visualGraph"
+          data-x="0"
+          data-y="0"
+          style="opacity: 0"
+        >
+          <div
+            class="d-inline-flex flex-row position-relative"
+            style="transform-origin: left top"
+            data-target="action-graph.stages"
+          >
+            <svg
+              class="WorkflowConnectors position-absolute top-0 left-0"
+              data-targets="action-graph.connectorLines"
+              width="900"
+              height="100%"
+              aria-hidden="true"
+              fill="none"
+            >
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-hf03719d996"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_-cargo-test-other-_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_benchmarks-instrumented-ty-run"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_benchmarks-walltime-ruff-run"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_benchmarks-walltime-ty-run"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_env_automations_security-review_prepare"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-hf87c68b8ab"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_publish-ecosystem-report_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_required-checks-passed"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-hf87c68b8ab"
+                data-to="group-hacb5f21642"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-hf87c68b8ab"
+                data-to="group-fuzz-ty_env_automations_publish-ty-fuzz-report_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-hf87c68b8ab"
+                data-to="group-fuzz-ty_publish-ty-fuzz-report_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-determine_changes_benchmarks-instrumented-ty-run"
+                data-to="group-ha6bf2fa46a"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-determine_changes_benchmarks-walltime-ruff-run"
+                data-to="group-benchmarks-walltime-ruff-build_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-determine_changes_benchmarks-walltime-ty-run"
+                data-to="group-benchmarks-walltime-ty-build_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-determine_changes_env_automations_security-review_prepare"
+                data-to="group-security-review_review_security-review_report"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-determine_changes_publish-ecosystem-report_publish"
+                data-to="group-ecosystem_env_automations_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-determine_changes_required-checks-passed"
+                data-to="group-hf03719d996"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-fuzz-ty_env_automations_publish-ty-fuzz-report_publish"
+                data-to="group-hacb5f21642"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-fuzz-ty_publish-ty-fuzz-report_publish"
+                data-to="group-hacb5f21642"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+              <path
+                class="WorkflowConnector"
+                data-from="group-security-review_review_security-review_report"
+                data-to="group-security-review_prepare_env_automations_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths"
+              />
+            </svg>
+            <svg
+              class="WorkflowConnectors position-absolute top-0 left-0"
+              data-target="action-graph.connectorLineHighlights"
+              data-targets="action-graph.connectorLines"
+              width="900"
+              height="100%"
+              aria-hidden="true"
+              fill="none"
+            >
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-hf03719d996"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_-cargo-test-other-_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_benchmarks-instrumented-ty-run"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_benchmarks-walltime-ruff-run"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_benchmarks-walltime-ty-run"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_env_automations_security-review_prepare"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-hf87c68b8ab"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_publish-ecosystem-report_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-h20dc871d92"
+                data-to="group-determine_changes_required-checks-passed"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-hf87c68b8ab"
+                data-to="group-hacb5f21642"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-hf87c68b8ab"
+                data-to="group-fuzz-ty_env_automations_publish-ty-fuzz-report_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-hf87c68b8ab"
+                data-to="group-fuzz-ty_publish-ty-fuzz-report_publish"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-determine_changes_benchmarks-instrumented-ty-run"
+                data-to="group-ha6bf2fa46a"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-determine_changes_benchmarks-walltime-ruff-run"
+                data-to="group-benchmarks-walltime-ruff-build_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-determine_changes_benchmarks-walltime-ty-run"
+                data-to="group-benchmarks-walltime-ty-build_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-determine_changes_env_automations_security-review_prepare"
+                data-to="group-security-review_review_security-review_report"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-determine_changes_publish-ecosystem-report_publish"
+                data-to="group-ecosystem_env_automations_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-determine_changes_required-checks-passed"
+                data-to="group-hf03719d996"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-fuzz-ty_env_automations_publish-ty-fuzz-report_publish"
+                data-to="group-hacb5f21642"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-fuzz-ty_publish-ty-fuzz-report_publish"
+                data-to="group-hacb5f21642"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+              <path
+                class="WorkflowConnector WorkflowConnector--hl"
+                data-from="group-security-review_review_security-review_report"
+                data-to="group-security-review_prepare_env_automations_"
+                fill="none"
+                d=""
+                data-targets="action-graph.paths action-graph.pathHighlights"
+              />
+            </svg>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-h20dc871d92"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="7f6cdba4-f280-57f1-84d9-c83bd72dd7d1"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/determine_changes"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="determine_changes"
+                  data-group-id="group-h20dc871d92"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-determine_changes"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785392731"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Determine changes
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          21s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-5aeb81bf-8247-4d44-96a3-8a779827a4b5"
+                    for="workflow-job-name-determine_changes"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Determine changes</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-hf87c68b8ab"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="9215f38a-9000-5a1b-bbf0-9cb81361a448"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/fuzz-ty"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="fuzz-ty"
+                  data-group-id="group-hf87c68b8ab"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-fuzz-ty"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569193"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Fuzz for new ty panics/timeouts
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          4m 40s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-71b08c09-5cec-48cc-b1df-242bde712597"
+                    for="workflow-job-name-fuzz-ty"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Fuzz for new ty panics/timeouts</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-determine_changes_benchmarks-instrumented-ty-run"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="18ecc44a-1012-59ee-b966-c4b46ee08fea"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/benchmarks-instrumented-ty-build"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="benchmarks-instrumented-ty-build"
+                  data-group-id="group-determine_changes_benchmarks-instrumented-ty-run"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-benchmarks-instrumented-ty-build"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569618"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            benchmarks instrumented ty (build)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          3m 45s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-d96f204d-5949-4357-8dc8-fd5c8841e3f4"
+                    for="workflow-job-name-benchmarks-instrumented-ty-build"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >benchmarks instrumented ty (build)</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-determine_changes_benchmarks-walltime-ruff-run"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="4f903120-61ea-525c-88b9-0141f40375dc"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/benchmarks-walltime-ruff-build"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="benchmarks-walltime-ruff-build"
+                  data-group-id="group-determine_changes_benchmarks-walltime-ruff-run"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-benchmarks-walltime-ruff-build"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569451"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            benchmarks walltime ruff (build)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          4m 33s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-19dee310-5938-48f9-8f19-c378d38e61f4"
+                    for="workflow-job-name-benchmarks-walltime-ruff-build"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >benchmarks walltime ruff (build)</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-determine_changes_benchmarks-walltime-ty-run"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="0086602e-4242-5bca-9d85-68fae74f5901"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/benchmarks-walltime-ty-build"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="benchmarks-walltime-ty-build"
+                  data-group-id="group-determine_changes_benchmarks-walltime-ty-run"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-benchmarks-walltime-ty-build"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569635"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            benchmarks walltime ty (build)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          3m 44s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-a8d7f3cc-6375-4285-aa52-805a96c8aa97"
+                    for="workflow-job-name-benchmarks-walltime-ty-build"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >benchmarks walltime ty (build)</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-determine_changes_env_automations_security-review_prepare"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="b99d786b-da11-567c-8a7b-ce15e3a6fbaf"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/security-review.review"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="security-review.review"
+                  data-group-id="group-determine_changes_env_automations_security-review_prepare"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-security-review.review"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569730"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow workflow-path-first-item"
+                            data-target="streaming-graph-job.name"
+                            >security-review&nbsp;</span
+                          >
+                          <span>/</span>
+                          <span class="css-truncate css-truncate-overflow min-width-0"
+                            >&nbsp;security review</span
+                          >
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          5m 20s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-8d5690c0-b223-4f78-a49b-33056a080277"
+                    for="workflow-job-name-security-review.review"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >security-review / security review</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-determine_changes_publish-ecosystem-report_publish"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="89f62663-a727-5183-acbc-ee7226fd84c2"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/ecosystem"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="ecosystem"
+                  data-group-id="group-determine_changes_publish-ecosystem-report_publish"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-ecosystem"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569420"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            ecosystem
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          7m 53s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-041d7523-d45f-45a5-b766-1a6e270526fd"
+                    for="workflow-job-name-ecosystem"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >ecosystem</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-determine_changes_required-checks-passed"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-p-3 WorkflowCard-group"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="4ec3b7d0-66fe-561c-a480-a83bfe441951"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-fmt"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-fmt"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-fmt"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569184"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo fmt
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          27s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-7c399e6d-46bd-4e83-b51f-7e48c5f4e45b"
+                    for="workflow-job-name-cargo-fmt"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo fmt</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="902b9721-9dbf-5686-b914-5de8eb5a93e0"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/shellcheck"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="shellcheck"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-shellcheck"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569255"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            shellcheck
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          29s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-6dd176b6-8357-4a2f-9b20-11d7e6360afe"
+                    for="workflow-job-name-shellcheck"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >shellcheck</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="401a6de2-6954-5fe1-88f4-23da37ead806"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-clippy"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-clippy"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-clippy"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569174"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo clippy
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          2m 35s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-743e15a4-1d75-4606-8bcc-2d11d47bd64f"
+                    for="workflow-job-name-cargo-clippy"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo clippy</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="16229dee-076d-5871-a45d-47ec0647966f"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/hawk"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="hawk"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-hawk"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569499"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo hawk
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          6m 55s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-75ce7b66-c2ce-4cb1-b865-e7cfd47df52d"
+                    for="workflow-job-name-hawk"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo hawk</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="8d6d2c64-f326-56ee-bd84-f131c50c4e59"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-test-linux"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-test-linux"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-test-linux"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569152"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo test (linux)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          5m 40s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-277ce897-d70d-424e-a0e6-18d1aa9a01e1"
+                    for="workflow-job-name-cargo-test-linux"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo test (linux)</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="a2128622-70ab-572b-a6be-405136e37a7b"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-test-wasm"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-test-wasm"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-test-wasm"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569549"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo test (wasm)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          3m 9s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-0284b7ef-e8da-4a23-9bfd-9e6be7133819"
+                    for="workflow-job-name-cargo-test-wasm"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo test (wasm)</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="a9f270fe-8d07-5de6-bcd0-a396659447bd"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-build-msrv"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-build-msrv"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-build-msrv"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569205"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo build (msrv)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          2m 15s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-7202aa64-6c12-4524-8e3f-444f90772d84"
+                    for="workflow-job-name-cargo-build-msrv"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo build (msrv)</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="c3418daa-9650-5db3-9a4f-a9c3fe72de0f"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/scripts"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="scripts"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-scripts"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569520"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            test scripts
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          1m 54s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-96a43732-b734-4998-b57d-a245f7060462"
+                    for="workflow-job-name-scripts"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >test scripts</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="277e13a0-aa3f-527b-b6b7-8c77d10fdab5"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-cooldowns"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-cooldowns"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-cooldowns"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569595"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            crates cooldowns
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          13s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-e42ea0b9-61ea-490b-8008-f6293cc5f8c3"
+                    for="workflow-job-name-cargo-cooldowns"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >crates cooldowns</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="96c27580-0394-5a3f-a1ef-4620d3ab3bae"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-deny"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-deny"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-deny"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569554"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo deny
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          31s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-939dba0e-949a-4691-bb12-e54eab0871f9"
+                    for="workflow-job-name-cargo-deny"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo deny</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="60d1f555-2150-522e-9633-a56f1c295afa"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/python-package"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="python-package"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-python-package"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569369"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            python package
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          1m 18s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-75cdbacb-c4da-4ce1-97d1-4c1b85f8b772"
+                    for="workflow-job-name-python-package"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >python package</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="e51c2c13-a9a7-5ffb-ba5c-a5e0db9a6b84"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/prek"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="prek"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-prek"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569594"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            prek
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          1m 8s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-50fb2096-3ecd-4fa3-89f4-f4a0b18abd26"
+                    for="workflow-job-name-prek"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >prek</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="591c717a-255b-530d-9ebf-14083ef25138"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/docs"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="docs"
+                  data-group-id="group-determine_changes_required-checks-passed"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-docs"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569553"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            mkdocs
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          2m 14s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-41ad84c6-6894-4bcf-ae83-0b9373ee2883"
+                    for="workflow-job-name-docs"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >mkdocs</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-determine_changes_"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-p-3 WorkflowCard-group"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="dda92099-3817-5afe-b6da-dbfcb96eeb28"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-publish-dry-run"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-publish-dry-run"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-publish-dry-run"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569283"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo publish dry-run
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          3m 54s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-0ef89b13-87a2-4bda-89dd-982d83aca9b2"
+                    for="workflow-job-name-cargo-publish-dry-run"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo publish dry-run</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="fa3d3fff-9bcb-54d3-826f-b13b1220eac0"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-test-linux-release"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-test-linux-release"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-test-linux-release"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569279"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo test (linux, release)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          3m 38s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-40bf5167-4190-43eb-99ad-74ea234cfbe2"
+                    for="workflow-job-name-cargo-test-linux-release"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo test (linux, release)</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="af8721fa-8b15-52b1-be28-a50e4a8231e4"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-fuzz-build"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-fuzz-build"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-fuzz-build"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569546"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo fuzz build
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          6m 54s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-82655eae-694c-4ccf-a653-610b6e175eae"
+                    for="workflow-job-name-cargo-fuzz-build"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo fuzz build</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="6028c9d7-b32e-55f4-a46a-d8e21b2b1c5f"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/fuzz-parser"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="fuzz-parser"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-fuzz-parser"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569661"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            fuzz parser
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          1m 26s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-997af6af-b365-4485-bf98-1696c5ad063f"
+                    for="workflow-job-name-fuzz-parser"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >fuzz parser</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="02822d41-7d41-5565-bd65-5111b421fafb"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/cargo-shear"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="cargo-shear"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-cargo-shear"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569539"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            cargo shear
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          23s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-0e536383-c7b2-48d4-ac98-f2d763b04256"
+                    for="workflow-job-name-cargo-shear"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >cargo shear</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="42186d5c-63dc-586c-be00-91c1e620e27b"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/ty-completion-evaluation"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="ty-completion-evaluation"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-ty-completion-evaluation"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569448"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            ty completion evaluation
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          2m 51s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-b2362f09-939f-486a-84d3-de89a6608a3b"
+                    for="workflow-job-name-ty-completion-evaluation"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >ty completion evaluation</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="a2498120-8daa-54f9-87a6-621e2fda28dd"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/pgo"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="pgo"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-pgo"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785571194"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-skip neutral-check"
+                            aria-label="skipped: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            PGO
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          0s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-0b4727c8-6052-4e3d-9b1d-9799649481b5"
+                    for="workflow-job-name-pgo"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >PGO</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="07413c06-f5ba-52e7-bda3-aa2873a17fbd"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/check-formatter-instability-and-black-similarity"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="check-formatter-instability-and-black-similarity"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-check-formatter-instability-and-black-similarity"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569578"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            formatter instabilities and black similarity
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          2m 19s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-1de0b743-6495-40f3-bab5-246820931ba1"
+                    for="workflow-job-name-check-formatter-instability-and-black-similarity"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >formatter instabilities and black similarity</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="64dbbbd7-8a02-5de4-82fa-cbaf99b99d6c"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/check-playground"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="check-playground"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-check-playground"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785572576"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-skip neutral-check"
+                            aria-label="skipped: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            check playground
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          0s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-1623e49f-89ee-4ffa-b92b-d0b89fc67799"
+                    for="workflow-job-name-check-playground"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >check playground</tool-tip
+                  >
+                </streaming-graph-job>
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="16a36df5-8b31-5d44-9e61-a7f7615babb2"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/benchmarks-instrumented-ruff"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="benchmarks-instrumented-ruff"
+                  data-group-id="group-determine_changes_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-benchmarks-instrumented-ruff"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131785569598"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            benchmarks instrumented (ruff)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          4m 12s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-33c3c759-93bd-4021-9935-3d44811bf177"
+                    for="workflow-job-name-benchmarks-instrumented-ruff"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >benchmarks instrumented (ruff)</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-determine_changes_-cargo-test-other-_"
+                class="WorkflowCard has-title position-relative rounded-2 border tmp-mb-6 tmp-p-3 WorkflowCard-group"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <div
+                  class="WorkflowCard-heading position-absolute text-small text-semibold pt-1 tmp-px-3 rounded-top-2"
+                >
+                  <span
+                    class="WorkflowCard-heading--content position-relative css-truncate css-truncate-target"
+                    style="top: 3px; max-width: 190px"
+                  >
+                    Matrix: cargo-test-other
+                  </span>
+                </div>
+                <div
+                  class="js-updatable-content js-socket-channel d-flex flex-row flex-items-center flex-auto width-full rounded-2 js-graph-matrix"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/matrix/ZGV0ZXJtaW5lX2NoYW5nZXN8LWNhcmdvLXRlc3Qtb3RoZXItfA==?attempt=1&amp;expanded=false"
+                  data-targets="action-graph.matrices"
+                  data-job-id="cargo-test-other"
+                  data-group-id="group-determine_changes_-cargo-test-other-_"
+                >
+                  <button
+                    type="button"
+                    data-update-url="/astral-sh/ruff/actions/runs/43395527723/graph/matrix/ZGV0ZXJtaW5lX2NoYW5nZXN8LWNhcmdvLXRlc3Qtb3RoZXItfA==?attempt=1&amp;expanded=true"
+                    data-action="click:action-graph#expandMatrix"
+                    class="btn-link text-small no-underline color-fg-muted d-flex flex-column flex-items-start WorkflowJob width-full rounded-2"
+                  >
+                    <div class="d-flex flex-items-center MatrixComponent-collapse--title f5">
+                      <div>
+                        <svg
+                          data-component="Octicon"
+                          width="16"
+                          height="16"
+                          class="octicon octicon-check-circle-fill color-fg-success"
+                          aria-label="completed successfully: "
+                          viewBox="0 0 16 16"
+                          version="1.1"
+                          role="img"
+                        >
+                          <path d=""></path>
+                        </svg>
+                      </div>
+                      <div
+                        class="flex-self-baseline flex-1 pl-2 no-wrap text-semibold color-fg-default"
+                      >
+                        2 jobs completed
+                      </div>
+                    </div>
+                    <div class="mt-2 mb-n1">Show all jobs</div>
+                  </button>
+                </div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-fuzz-ty_env_automations_publish-ty-fuzz-report_publish"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="6195f38b-dd01-56d0-a195-de1a081ff787"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/notify-ty-fuzz.publish"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="notify-ty-fuzz.publish"
+                  data-group-id="group-fuzz-ty_env_automations_publish-ty-fuzz-report_publish"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-notify-ty-fuzz.publish"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131787607114"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow workflow-path-first-item"
+                            data-target="streaming-graph-job.name"
+                            >notify-ty-fuzz&nbsp;</span
+                          >
+                          <span>/</span>
+                          <span class="css-truncate css-truncate-overflow min-width-0"
+                            >&nbsp;publish</span
+                          >
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          14s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-24e15135-afd0-4f14-8db7-43b52023c57f"
+                    for="workflow-job-name-notify-ty-fuzz.publish"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >notify-ty-fuzz / publish</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-fuzz-ty_publish-ty-fuzz-report_publish"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="3070c128-4248-5e6b-a7f3-e975504611a0"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/minimize-ty-fuzz"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="minimize-ty-fuzz"
+                  data-group-id="group-fuzz-ty_publish-ty-fuzz-report_publish"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-minimize-ty-fuzz"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131787607428"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-skip neutral-check"
+                            aria-label="skipped: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            Minimize ty fuzz failures
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          0s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-4acfb95e-33d7-43f3-86db-bc3015121455"
+                    for="workflow-job-name-minimize-ty-fuzz"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >Minimize ty fuzz failures</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-ha6bf2fa46a"
+                class="WorkflowCard has-title position-relative rounded-2 border tmp-mb-6 tmp-p-3 WorkflowCard-group"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <div
+                  class="WorkflowCard-heading position-absolute text-small text-semibold pt-1 tmp-px-3 rounded-top-2"
+                >
+                  <span
+                    class="WorkflowCard-heading--content position-relative css-truncate css-truncate-target"
+                    style="top: 3px; max-width: 190px"
+                  >
+                    Matrix: benchmarks-instrumented-ty-run
+                  </span>
+                </div>
+                <div
+                  class="js-updatable-content js-socket-channel d-flex flex-row flex-items-center flex-auto width-full rounded-2 js-graph-matrix"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/matrix/YmVuY2htYXJrcy1pbnN0cnVtZW50ZWQtdHktYnVpbGR8LWJlbmNobWFya3Mt%0AaW5zdHJ1bWVudGVkLXR5LXJ1bi18?attempt=1&amp;expanded=false"
+                  data-targets="action-graph.matrices"
+                  data-job-id="benchmarks-instrumented-ty-run"
+                  data-group-id="group-ha6bf2fa46a"
+                >
+                  <button
+                    type="button"
+                    data-update-url="/astral-sh/ruff/actions/runs/43395527723/graph/matrix/YmVuY2htYXJrcy1pbnN0cnVtZW50ZWQtdHktYnVpbGR8LWJlbmNobWFya3Mt%0AaW5zdHJ1bWVudGVkLXR5LXJ1bi18?attempt=1&amp;expanded=true"
+                    data-action="click:action-graph#expandMatrix"
+                    class="btn-link text-small no-underline color-fg-muted d-flex flex-column flex-items-start WorkflowJob width-full rounded-2"
+                  >
+                    <div class="d-flex flex-items-center MatrixComponent-collapse--title f5">
+                      <div>
+                        <div style="height: 16px; width: 16px">
+                          <svg
+                            aria-label="currently running: "
+                            width="100%"
+                            height="100%"
+                            fill="none"
+                            viewBox="0 0 16 16"
+                            class="anim-rotate"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill="none"
+                              stroke="var(--fgColor-attention)"
+                              stroke-width="2"
+                              d=""
+                              opacity=".5"
+                            />
+                            <path
+                              fill="var(--fgColor-attention)"
+                              fill-rule="evenodd"
+                              d="M8 4a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"
+                              clip-rule="evenodd"
+                            />
+                            <path
+                              fill="var(--fgColor-attention)"
+                              d="M14 8a6 6 0 0 0-6-6V0a8 8 0 0 1 8 8h-2Z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div
+                        class="flex-self-baseline flex-1 pl-2 no-wrap text-semibold color-fg-default"
+                      >
+                        5/9 jobs completed
+                      </div>
+                    </div>
+                    <div class="mt-2 mb-n1">Show all jobs</div>
+                  </button>
+                </div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-benchmarks-walltime-ruff-build_"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="7e029a9f-b23e-5211-a40c-9b1c7557aa1e"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/benchmarks-walltime-ruff-run"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="benchmarks-walltime-ruff-run"
+                  data-group-id="group-benchmarks-walltime-ruff-build_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-benchmarks-walltime-ruff-run"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131787551908"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            benchmarks walltime ruff (x86_64)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          2m 30s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-60af1984-5e81-4b94-af17-24a5edc21dae"
+                    for="workflow-job-name-benchmarks-walltime-ruff-run"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >benchmarks walltime ruff (x86_64)</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-benchmarks-walltime-ty-build_"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="79a772ed-0d4d-51dd-88c2-972a3801fab6"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/benchmarks-walltime-ty-run"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="benchmarks-walltime-ty-run"
+                  data-group-id="group-benchmarks-walltime-ty-build_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-benchmarks-walltime-ty-run"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131787201817"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            benchmarks walltime ty (x86_64)
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          3m 34s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-e52e76a5-bd53-4e0d-a892-940d983f55d0"
+                    for="workflow-job-name-benchmarks-walltime-ty-run"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >benchmarks walltime ty (x86_64)</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-security-review_review_security-review_report"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="46c88656-6fa0-5f67-9c14-5c32fcb79ec0"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/security-review.prepare"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="security-review.prepare"
+                  data-group-id="group-security-review_review_security-review_report"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-security-review.prepare"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131787900461"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow workflow-path-first-item"
+                            data-target="streaming-graph-job.name"
+                            >security-review&nbsp;</span
+                          >
+                          <span>/</span>
+                          <span class="css-truncate css-truncate-overflow min-width-0"
+                            >&nbsp;prepare</span
+                          >
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          9s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-a1c71ebf-a070-41b5-9bd2-7e496cc5ea89"
+                    for="workflow-job-name-security-review.prepare"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >security-review / prepare</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--output position-absolute circle"
+                ></div>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-ecosystem_env_automations_"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="ef78dba6-5f59-5cb2-982d-0b616f34cceb"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/publish-ecosystem-report.publish"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="publish-ecosystem-report.publish"
+                  data-group-id="group-ecosystem_env_automations_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-publish-ecosystem-report.publish"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131789027777"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow workflow-path-first-item"
+                            data-target="streaming-graph-job.name"
+                            >publish-ecosystem-report&nbsp;</span
+                          >
+                          <span>/</span>
+                          <span class="css-truncate css-truncate-overflow min-width-0"
+                            >&nbsp;publish</span
+                          >
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          25s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-562acd9e-0023-4b39-bfad-64fbc3f45c7a"
+                    for="workflow-job-name-publish-ecosystem-report.publish"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >publish-ecosystem-report / publish</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-hf03719d996"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="1d7a0b77-290a-5ad8-a27e-dbdf6bab7568"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/required-checks-passed"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="required-checks-passed"
+                  data-group-id="group-hf03719d996"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-required-checks-passed"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131788611490"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-check-circle-fill color-fg-success"
+                            aria-label="completed successfully: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow"
+                            data-target="streaming-graph-job.name"
+                          >
+                            all required checks passed
+                          </span>
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          11s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-1cb61378-41c2-4c3b-ad85-4c4db1c8e473"
+                    for="workflow-job-name-required-checks-passed"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >all required checks passed</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="WorkflowStage d-inline-flex flex-column flex-items-center tmp-mr-6 tmp-my-4"
+            >
+              <div
+                id="group-hacb5f21642"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/publish-ty-fuzz-report.publish"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="publish-ty-fuzz-report.publish"
+                  data-group-id="group-hacb5f21642"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-publish-ty-fuzz-report.publish"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <svg
+                          aria-hidden="true"
+                          data-component="Octicon"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          version="1.1"
+                          width="16"
+                          data-view-component="true"
+                          class="octicon octicon-circle color-fg-muted"
+                        >
+                          <path d=""></path>
+                        </svg>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-muted pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow workflow-path-first-item"
+                            data-target="streaming-graph-job.name"
+                            >publish-ty-fuzz-report&nbsp;</span
+                          >
+                          <span>/</span>
+                          <span class="css-truncate css-truncate-overflow min-width-0"
+                            >&nbsp;publish</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-47d1b83b-db4e-47f6-8dad-58068ff488f4"
+                    for="workflow-job-name-publish-ty-fuzz-report.publish"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >publish-ty-fuzz-report / publish</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+              <div
+                id="group-security-review_prepare_env_automations_"
+                class="WorkflowCard position-relative rounded-2 border tmp-mb-6 tmp-my-3"
+                data-action="
+    mouseenter:action-graph#mouseEnter
+    mouseleave:action-graph#mouseLeave
+  "
+              >
+                <streaming-graph-job
+                  class="js-socket-channel WorkflowJob position-relative rounded-2 width-full"
+                  data-should-stream="ruff"
+                  data-external-id="c6839bf4-2b48-5289-b372-69dc7892ba97"
+                  data-concluded="true"
+                  data-url="/astral-sh/ruff/actions/runs/43395527723/graph/job/security-review.report"
+                  data-action="socket:message:action-graph#updateJob"
+                  style="font-size: 0"
+                  data-targets="action-graph.jobs"
+                  data-job-id="security-review.report"
+                  data-group-id="group-security-review_prepare_env_automations_"
+                >
+                  <a
+                    class="WorkflowJob-title d-flex flex-items-center no-underline f5"
+                    id="workflow-job-name-security-review.report"
+                    href="/astral-sh/ruff/actions/runs/43395527723/job/131787989097"
+                    tabindex="0"
+                    draggable="false"
+                    data-action="dragstart:action-graph#cancelEvent"
+                    data-turbo="false"
+                  >
+                    <div class="width-full">
+                      <div class="d-flex flex-auto flex-items-center no-wrap width-full">
+                        <div>
+                          <svg
+                            data-component="Octicon"
+                            width="16"
+                            height="16"
+                            class="octicon octicon-skip neutral-check"
+                            aria-label="skipped: "
+                            viewBox="0 0 16 16"
+                            version="1.1"
+                            role="img"
+                          >
+                            <path d=""></path>
+                          </svg>
+                        </div>
+                        <div
+                          data-view-component="true"
+                          class="min-width-0 flex-justify-start flex-nowrap css-truncate-overflow d-flex text-semibold color-fg-default pl-2 tmp-pl-2 flex-1"
+                        >
+                          <span
+                            class="css-truncate css-truncate-overflow workflow-path-first-item"
+                            data-target="streaming-graph-job.name"
+                            >security-review&nbsp;</span
+                          >
+                          <span>/</span>
+                          <span class="css-truncate css-truncate-overflow min-width-0"
+                            >&nbsp;report</span
+                          >
+                        </div>
+                        <div
+                          class="flex-self-baseline text-small color-fg-muted flex-shrink-0 pl-1"
+                        >
+                          0s
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                  <tool-tip
+                    data-target="streaming-graph-job.tooltip"
+                    id="tooltip-7ace9bb0-bcfb-4787-99da-02341592ccbc"
+                    for="workflow-job-name-security-review.report"
+                    popover="manual"
+                    data-direction="ne"
+                    data-type="description"
+                    data-view-component="true"
+                    class="jobName-truncation-tooltip sr-only position-absolute"
+                    >security-review / report</tool-tip
+                  >
+                </streaming-graph-job>
+                <div
+                  class="WorkflowCard-port WorkflowCard-port--input position-absolute circle"
+                ></div>
+              </div>
+            </div>
+          </div>
+          <div
+            aria-hidden="true"
+            class="position-absolute text-small"
+            style="top: -200px; left: -4000px"
+          >
+            <p>Oh hello! Nice to see you.</p>
+            <p>
+              Made with ❤️ by
+              <a class="Link--inTextBlock" href="https://actions.github.io/humans.txt" tabindex="-1"
+                >humans.txt</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="position-absolute bottom-0 right-0 tmp-mr-3 tmp-mb-3 pr-1 pb-1 d-flex gap-2">
+        <button
+          data-action="click:action-graph#fit"
+          data-target="action-graph.zoomFit"
+          id="icon-button-f0eb712e-4881-43ec-94c0-94d77a700006"
+          aria-labelledby="tooltip-c49f1fda-f5cd-4d45-af6c-00b1595a7d8b"
+          type="button"
+          disabled="disabled"
+          data-view-component="true"
+          class="Button Button--iconOnly Button--secondary Button--small"
+        >
+          <svg
+            aria-hidden="true"
+            data-component="Octicon"
+            height="16"
+            viewBox="0 0 16 16"
+            version="1.1"
+            width="16"
+            data-view-component="true"
+            class="octicon octicon-screen-full Button-visual"
+          >
+            <path d=""></path>
+          </svg></button
+        ><tool-tip
+          id="tooltip-c49f1fda-f5cd-4d45-af6c-00b1595a7d8b"
+          for="icon-button-f0eb712e-4881-43ec-94c0-94d77a700006"
+          popover="manual"
+          data-direction="s"
+          data-type="label"
+          data-view-component="true"
+          class="sr-only position-absolute"
+          >Fit to window</tool-tip
+        >
+        <div data-view-component="true" class="ButtonGroup">
+          <div>
+            <button
+              data-action="click:action-graph#out"
+              data-target="action-graph.zoomOut"
+              id="icon-button-14789c3f-ec7f-4787-97a8-72dc5bfc6fb5"
+              aria-labelledby="tooltip-c0a52917-4961-4fcf-9b75-241d94365760"
+              type="button"
+              disabled="disabled"
+              data-view-component="true"
+              class="Button Button--iconOnly Button--secondary Button--small"
+            >
+              <svg
+                aria-hidden="true"
+                data-component="Octicon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                data-view-component="true"
+                class="octicon octicon-dash Button-visual"
+              >
+                <path d=""></path>
+              </svg></button
+            ><tool-tip
+              id="tooltip-c0a52917-4961-4fcf-9b75-241d94365760"
+              for="icon-button-14789c3f-ec7f-4787-97a8-72dc5bfc6fb5"
+              popover="manual"
+              data-direction="s"
+              data-type="label"
+              data-view-component="true"
+              class="sr-only position-absolute"
+              >Zoom out</tool-tip
+            >
+          </div>
+          <div>
+            <button
+              data-action="click:action-graph#in"
+              data-target="action-graph.zoomIn"
+              id="icon-button-2ee3e0c1-9328-4df7-af0a-0733a8e752df"
+              aria-labelledby="tooltip-f923ebde-8c99-49d6-b478-c2f3b343dece"
+              type="button"
+              disabled="disabled"
+              data-view-component="true"
+              class="Button Button--iconOnly Button--secondary Button--small"
+            >
+              <svg
+                aria-hidden="true"
+                data-component="Octicon"
+                height="16"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                data-view-component="true"
+                class="octicon octicon-plus Button-visual"
+              >
+                <path d=""></path>
+              </svg></button
+            ><tool-tip
+              id="tooltip-f923ebde-8c99-49d6-b478-c2f3b343dece"
+              for="icon-button-2ee3e0c1-9328-4df7-af0a-0733a8e752df"
+              popover="manual"
+              data-direction="s"
+              data-type="label"
+              data-view-component="true"
+              class="sr-only position-absolute"
+              >Zoom in</tool-tip
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </action-graph>
+</div>
