@@ -12,7 +12,7 @@ It runs only on workflow run pages (`github.com/<owner>/<repo>/actions/runs/<id>
 
 ## What you get
 
-- A top-down layout with curved edges, computed by [ELK](https://eclipse.dev/elk/).
+- A top-down layout with curved edges, computed by [ELK](https://eclipse.dev/elk/). Every job that needs nothing else starts in the top row.
 - Matrix jobs fetched and listed in place. Groups larger than 12 jobs start collapsed and show a status bar plus the jobs that need attention.
 - Jobs from the same reusable workflow call grouped in a dashed box you can collapse.
 - Wide fan-outs of parallel jobs packed into a grid, so a 30-job test stage doesn't stretch the graph across three screens.
