@@ -25,12 +25,17 @@ import {
   clampPan,
   fitScale,
   isVisible,
+  OPEN_SCALE,
   READABLE_SCALE,
   type Transform,
   zoomAround,
 } from "./viewport";
 
 const MIN_HEIGHT = 200;
+/** Smallest panel height the automatic sizing picks. */
+const MIN_INLINE_HEIGHT = 360;
+/** Space left below the panel when it is sized to the window. */
+const PAGE_MARGIN = 16;
 const ZOOM_STEP = 1.25;
 const MATRIX_POLL_MS = 10_000;
 const MOD_KEY = /Mac|iPhone|iPad/.test(navigator.platform) ? "⌘" : "Ctrl";
@@ -135,7 +140,7 @@ export class BgavApp {
       onClick: () => this.zoomTo(1),
     });
     this.fullscreenButton = this.button({
-      text: "Expand",
+      icon: "screen-full",
       title: "Full screen (F)",
       onClick: () => this.toggleFullscreen(),
     });
@@ -217,7 +222,7 @@ export class BgavApp {
           }),
         ),
         this.button({
-          text: "Fit",
+          icon: "focus-center",
           title: "Fit the graph to the view (0)",
           onClick: () => this.fit(true),
         }),
@@ -372,10 +377,10 @@ export class BgavApp {
     check(this.menuItems.simplify, this.prefs.simplifyEdges);
     check(this.menuItems.critical, this.critical);
     check(this.menuItems.minimap, this.prefs.showMinimap);
-    this.fullscreenButton.textContent = this.fullscreen ? "Exit" : "Expand";
-    this.fullscreenButton.title = this.fullscreen
-      ? "Exit full screen (F or Esc)"
-      : "Full screen (F)";
+    const title = this.fullscreen ? "Exit full screen (F or Esc)" : "Full screen (F)";
+    this.fullscreenButton.replaceChildren(icon(this.fullscreen ? "screen-normal" : "screen-full"));
+    this.fullscreenButton.title = title;
+    this.fullscreenButton.setAttribute("aria-label", title);
     this.updateMinimap();
   }
 
@@ -837,7 +842,7 @@ export class BgavApp {
     const k = fitScale(layout, view);
     if (k >= READABLE_SCALE || this.fullscreen) return k;
     // Too big to fit readably: open at a comfortable zoom and let the user pan.
-    return 0.65;
+    return OPEN_SCALE;
   }
 
   /** Sizes the inline panel to the graph and picks a readable starting zoom. */
@@ -855,6 +860,18 @@ export class BgavApp {
     }
   }
 
+  /**
+   * Tallest inline panel that still fits on screen when the page is scrolled
+   * to the top, so its bottom edge and the overview map stay in view. A panel
+   * placed far down the page gets a share of the window instead.
+   */
+  private maxInlineHeight(): number {
+    const top = this.viewport.getBoundingClientRect().top + window.scrollY;
+    const visible = Math.floor(window.innerHeight - top - PAGE_MARGIN);
+    const share = Math.round(window.innerHeight * 0.6);
+    return Math.max(MIN_INLINE_HEIGHT, visible >= MIN_INLINE_HEIGHT ? visible : share);
+  }
+
   private applyHeight(): void {
     const layout = this.layout;
     if (this.fullscreen || !layout) return;
@@ -862,7 +879,7 @@ export class BgavApp {
       this.viewport.style.height = `${Math.max(MIN_HEIGHT, this.prefs.height)}px`;
       return;
     }
-    const maxHeight = Math.max(360, Math.round(window.innerHeight * 0.8));
+    const maxHeight = this.maxInlineHeight();
     const width = this.viewport.clientWidth;
     const k = this.initialScale({ width, height: maxHeight });
     const height = Math.round(Math.min(maxHeight, Math.max(MIN_HEIGHT, layout.height * k + 48)));

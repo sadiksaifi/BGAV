@@ -8,8 +8,10 @@ export interface Transform {
 
 export const MIN_SCALE = 0.1;
 export const MAX_SCALE = 2.5;
-/** Below this scale, fitting the whole graph makes job names unreadable. */
-export const READABLE_SCALE = 0.5;
+/** Below this scale, fitting the whole graph makes job names hard to read. */
+export const READABLE_SCALE = 0.7;
+/** Scale a graph opens at when fitting it would go below READABLE_SCALE. */
+export const OPEN_SCALE = 0.8;
 const MARGIN = 24;
 /** Minimum part of the graph, in screen pixels, that panning keeps on screen. */
 const KEEP_VISIBLE = 80;

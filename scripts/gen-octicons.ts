@@ -13,6 +13,7 @@ const ICONS = [
   "circle",
   "clock",
   "dash",
+  "focus-center",
   "fold",
   "git-merge",
   "graph",
