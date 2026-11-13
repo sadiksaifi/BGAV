@@ -11,11 +11,13 @@ import { BgavApp } from "../view/app";
 import { isRunPage } from "./route";
 
 const MODE_ATTR = "data-bgav";
+/** Marks the graph region BGAV found, which may not match GRAPH_REGION_SELECTOR. */
+const REGION_ATTR = "data-bgav-region";
 const PARSE_DELAY_MS = 150;
 
 // Hides GitHub's graph while BGAV shows its own. GitHub keeps updating its graph
 // in the background, and BGAV reads those updates.
-const PAGE_CSS = `html[${MODE_ATTR}="bgav"] ${GRAPH_REGION_SELECTOR} { display: none !important; }`;
+const PAGE_CSS = `html[${MODE_ATTR}="bgav"] [${REGION_ATTR}] { display: none !important; }`;
 
 let app: BgavApp | undefined;
 let region: Element | null = null;
@@ -46,13 +48,30 @@ function applyPageMode(): void {
   setMode(problem ? null : userMode);
 }
 
+function setRegion(next: Element | null): void {
+  if (region === next) return;
+  region?.removeAttribute(REGION_ATTR);
+  region = next;
+  region?.setAttribute(REGION_ATTR, "");
+}
+
+/** True for added markup that holds a run graph. */
+function holdsGraph(node: Node): boolean {
+  return (
+    node instanceof Element &&
+    (node.matches(GRAPH_REGION_SELECTOR) ||
+      node.matches("action-graph") ||
+      findGraphRegion(node) !== null)
+  );
+}
+
 function unmount(): void {
   window.clearTimeout(parseTimer);
   observer?.disconnect();
   observer = undefined;
   app?.destroy();
   app = undefined;
-  region = null;
+  setRegion(null);
   statusEl = null;
   problem = false;
   setMode(null);
@@ -63,9 +82,11 @@ function parseNow(): void {
   const current = findGraphRegion();
   if (!current) return;
   if (current !== region || !app.host.isConnected || app.host.nextElementSibling !== current) {
-    region = current;
+    setRegion(current);
     current.before(app.host);
   }
+  // GitHub's graph is showing by choice; parse again when the user switches back.
+  if (userMode === "native") return;
   let run: RunGraph;
   try {
     run = parseGraph(current);
@@ -99,14 +120,7 @@ function relevant(mutations: MutationRecord[]): boolean {
     if (app?.host.contains(m.target)) continue;
     if (region.contains(m.target)) return true;
     if (statusEl?.contains(m.target)) return true;
-    for (const node of m.addedNodes) {
-      if (
-        node instanceof Element &&
-        (node.matches(GRAPH_REGION_SELECTOR) || node.querySelector(GRAPH_REGION_SELECTOR))
-      ) {
-        return true;
-      }
-    }
+    for (const node of m.addedNodes) if (holdsGraph(node)) return true;
   }
   return false;
 }
@@ -123,18 +137,23 @@ async function mount(): Promise<void> {
     ensurePageStyle();
     userMode = loaded.mode;
     problem = false;
-    app = new BgavApp(loaded, {
+    // Hooks from an app that was replaced or destroyed are ignored.
+    const instance: BgavApp = new BgavApp(loaded, {
       onModeChange: (mode) => {
+        if (app !== instance) return;
         prefs = Promise.resolve({ ...loaded, mode });
         userMode = mode;
         applyPageMode();
+        if (mode === "bgav") parseNow();
       },
       onProblemChange: (value) => {
+        if (app !== instance) return;
         problem = value;
         applyPageMode();
       },
     });
-    region = found;
+    app = instance;
+    setRegion(found);
     found.before(app.host);
     applyPageMode();
     observer = new MutationObserver((mutations) => {

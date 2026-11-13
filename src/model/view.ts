@@ -108,6 +108,8 @@ export function buildView(run: RunGraph, options: ViewOptions): ViewGraph {
   const nodes: ViewNode[] = [];
   const clusters = new Map<string, ViewCluster>();
   const collapsedClusterNodes = new Map<string, ViewNode>();
+  /** Each card's status, so an unloaded matrix's summary counts toward its cluster. */
+  const clusterStatuses = new Map<string, Status[]>();
   const remap = new Map<string, string>();
 
   const timingJobs = new Map<string, Job[]>();
@@ -129,6 +131,9 @@ export function buildView(run: RunGraph, options: ViewOptions): ViewGraph {
     }
     cluster.jobs.push(...jobs);
     cluster.children.push(card.id);
+    const statuses = clusterStatuses.get(id) ?? [];
+    statuses.push(cardStatus(card, jobs, settled));
+    clusterStatuses.set(id, statuses);
 
     if (options.collapsed.get(id) ?? false) {
       // A collapsed cluster takes the place of its first card.
@@ -160,7 +165,7 @@ export function buildView(run: RunGraph, options: ViewOptions): ViewGraph {
 
   const expandedClusters: ViewCluster[] = [];
   for (const cluster of clusters.values()) {
-    cluster.status = aggregateStatus(cluster.jobs.map((j) => j.status));
+    cluster.status = aggregateStatus(clusterStatuses.get(cluster.id) ?? []);
     cluster.counts = countStatuses(cluster.jobs);
     const node = collapsedClusterNodes.get(cluster.id);
     if (node) {
@@ -197,6 +202,13 @@ export function buildView(run: RunGraph, options: ViewOptions): ViewGraph {
   };
 }
 
+/** A matrix without loaded jobs takes the status of GitHub's collapsed summary. */
+function cardStatus(card: Card, jobs: Job[], settled: boolean): Status {
+  if (card.kind !== "matrix" || jobs.length > 0) return aggregateStatus(jobs.map((j) => j.status));
+  const summary = card.matrix?.summaryStatus ?? "pending";
+  return settled && summary === "pending" ? "skipped" : summary;
+}
+
 function cardNode(
   card: Card,
   jobs: Job[],
@@ -204,13 +216,7 @@ function cardNode(
   options: ViewOptions,
   settled: boolean,
 ): ViewNode {
-  const matrixStatus = card.matrix?.summaryStatus ?? "pending";
-  const status =
-    card.kind === "matrix" && jobs.length === 0
-      ? settled && matrixStatus === "pending"
-        ? "skipped"
-        : matrixStatus
-      : aggregateStatus(jobs.map((j) => j.status));
+  const status = cardStatus(card, jobs, settled);
   const collapsible = card.kind !== "job" && jobs.length > 1;
   const node: ViewNode = {
     id: card.id,

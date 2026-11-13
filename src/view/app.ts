@@ -1,6 +1,6 @@
 import { MatrixLoader } from "../github/matrix";
 import { STATUS_LABEL } from "../github/status";
-import { type Box, type Layout, layoutGraph, measure } from "../layout/layout";
+import { attentionJobs, type Box, type Layout, layoutGraph, measure } from "../layout/layout";
 import { h, s } from "../lib/dom";
 import { formatDuration } from "../lib/duration";
 import { type Prefs, savePrefs } from "../lib/prefs";
@@ -43,7 +43,6 @@ interface NodeEntry {
 export interface AppHooks {
   /** Called when the user switches between BGAV and GitHub's graph. */
   onModeChange: (mode: Prefs["mode"]) => void;
-  /** Called when BGAV cannot draw the graph, so GitHub's graph can show instead. */
   /** BGAV cannot draw this run (true) or can again (false); GitHub's graph shows meanwhile. */
   onProblemChange: (problem: boolean) => void;
 }
@@ -68,6 +67,14 @@ export class BgavApp {
   private layoutPending = false;
   /** The user is dragging the resize handle. */
   private resizing = false;
+  /** Set by destroy(); late callbacks then do nothing. */
+  private destroyed = false;
+  /** The user asked for a fitted view; it refits as the graph or panel changes. */
+  private fitted = false;
+  /** Page elements made inert while full screen, so focus stays in the panel. */
+  private inerted: HTMLElement[] = [];
+  /** Focus is being moved back after a re-render; do not pan to it. */
+  private restoringFocus = false;
   private readonly brand: HTMLElement;
   private readonly chips: HTMLElement;
   private readonly search: HTMLElement;
@@ -262,7 +269,7 @@ export class BgavApp {
       attachGestures(this.viewport, {
         get: () => this.transform,
         set: (t, animate) => {
-          this.userMoved = true;
+          this.moved();
           this.setTransform(t, animate);
         },
         wheelPans: () => this.fullscreen,
@@ -306,10 +313,19 @@ export class BgavApp {
   }
 
   destroy(): void {
+    this.destroyed = true;
+    this.cancelLayout();
     for (const cleanup of this.cleanups) cleanup();
     this.loader.clear();
     this.setFullscreen(false);
     this.host.remove();
+  }
+
+  /** Drops a layout still being computed, so its result or failure is ignored. */
+  private cancelLayout(): void {
+    this.layoutToken++;
+    this.layoutPending = false;
+    this.layoutSig = "";
   }
 
   // ---------------------------------------------------------------- state
@@ -323,10 +339,14 @@ export class BgavApp {
 
   private setMode(mode: Prefs["mode"]): void {
     this.closeMenu();
-    if (mode === "native") this.setFullscreen(false);
+    if (mode === "native") {
+      this.setFullscreen(false);
+      // A layout that finishes or fails after the switch must not change GitHub's view.
+      this.cancelLayout();
+    }
     this.setPref({ mode });
     this.applyMode();
-    this.hooks.onModeChange(mode);
+    if (!this.destroyed) this.hooks.onModeChange(mode);
     // GitHub's graph mode skips matrix loading and layout, so catch up now.
     if (mode === "bgav") this.syncMatrices();
   }
@@ -355,6 +375,7 @@ export class BgavApp {
   }
 
   private syncProblem(): void {
+    if (this.destroyed) return;
     if (this.problem) this.setFullscreen(false);
     this.applyMode();
     this.hooks.onProblemChange(this.problem);
@@ -370,7 +391,7 @@ export class BgavApp {
 
   private toggleNode(id: string): void {
     // Keep the toggled node in place instead of refitting the view.
-    this.userMoved = true;
+    this.moved();
     // Expanded clusters are not nodes; they are listed in view.clusters.
     const node = this.view?.nodes.find((n) => n.id === id);
     const current = node ? node.collapsed : false;
@@ -380,13 +401,16 @@ export class BgavApp {
 
   private setAllCollapsed(collapsed: boolean): void {
     this.closeMenu();
-    for (const node of this.view?.nodes ?? []) {
-      if (node.kind === "cluster") {
-        if (!collapsed) this.collapsed.set(node.id, false);
-      } else if (node.collapsible) {
-        this.collapsed.set(node.id, collapsed);
-      }
-    }
+    const view = this.view;
+    if (!view) return;
+    // Expanded clusters are listed in view.clusters, collapsed ones in view.nodes.
+    for (const cluster of view.clusters) this.collapsed.set(cluster.id, collapsed);
+    for (const node of view.nodes)
+      if (node.kind === "cluster") this.collapsed.set(node.id, collapsed);
+    // Cards inside a collapsed cluster are not in view.nodes, so go by the run.
+    // A card that cannot collapse ignores the setting.
+    for (const card of this.run?.cards ?? [])
+      if (card.kind !== "job") this.collapsed.set(card.id, collapsed);
     void this.refresh();
   }
 
@@ -458,7 +482,7 @@ export class BgavApp {
   private async refresh(anchorId?: string): Promise<void> {
     const run = this.run;
     // GitHub's graph is showing, so there is nothing to draw.
-    if (!run || this.native || this.parseProblem) return;
+    if (!run || this.destroyed || this.native || this.parseProblem) return;
     const view = buildView(run, {
       collapsed: this.collapsed,
       simplifyEdges: this.prefs.simplifyEdges,
@@ -524,7 +548,9 @@ export class BgavApp {
     this.renderNodes(layout);
     this.minimap.setLayout(layout);
 
-    if (!this.placed || !this.userMoved) {
+    if (this.fitted) {
+      this.fit();
+    } else if (!this.placed || !this.userMoved) {
       // Until the user moves the view, keep it fitted as matrices load and the graph grows.
       this.placed = false;
       this.placeInitially();
@@ -582,6 +608,7 @@ export class BgavApp {
       });
       chip.append(statusIcon(status, 14), `${count} ${label}`);
       chip.setAttribute("aria-pressed", String(pressed));
+      chip.dataset.status = status;
       chips.push(chip);
     }
     if (this.critical && this.view) {
@@ -595,7 +622,7 @@ export class BgavApp {
         ),
       );
     }
-    this.chips.replaceChildren(...chips);
+    this.keepFocus(this.chips, () => this.chips.replaceChildren(...chips));
   }
 
   private renderBack(layout: Layout): void {
@@ -606,7 +633,7 @@ export class BgavApp {
       if (cluster) els.push(clusterElement(placed, cluster));
     }
     for (const bundle of layout.bundles.values()) els.push(bundleElement(bundle));
-    this.backLayer.replaceChildren(...els);
+    this.keepFocus(this.backLayer, () => this.backLayer.replaceChildren(...els));
   }
 
   private renderEdges(layout: Layout): void {
@@ -614,6 +641,28 @@ export class BgavApp {
   }
 
   private renderNodes(layout: Layout): void {
+    this.keepFocus(this.nodeLayer, () => this.renderNodesNow(layout));
+  }
+
+  /**
+   * Runs a re-render of `container` and gives keyboard focus back to the
+   * matching control when the render replaced the focused one.
+   */
+  private keepFocus(container: HTMLElement, render: () => void): void {
+    const active = this.shadow.activeElement;
+    const key = active && container.contains(active) ? focusKey(active) : undefined;
+    render();
+    if (!key || (active?.isConnected && container.contains(active))) return;
+    const target = [...container.querySelectorAll<HTMLElement>(`[${key.attr}]`)].find(
+      (el) => el.getAttribute(key.attr) === key.value,
+    );
+    if (!target) return;
+    this.restoringFocus = true;
+    target.focus({ preventScroll: true });
+    this.restoringFocus = false;
+  }
+
+  private renderNodesNow(layout: Layout): void {
     const next = new Map<string, NodeEntry>();
     const ordered: HTMLElement[] = [];
     for (const placed of layout.nodes.values()) {
@@ -711,7 +760,7 @@ export class BgavApp {
   }
 
   private tick(): void {
-    if (this.native || this.problem) return;
+    if (this.destroyed || this.native || this.problem) return;
     const now = Date.now();
     for (const el of this.shadow.querySelectorAll<HTMLElement>(".dur.live[data-started]")) {
       const text = formatDuration((now - Number(el.dataset.started)) / 1000);
@@ -812,13 +861,11 @@ export class BgavApp {
     if (!id) return;
     const node = this.view?.nodes.find((n) => n.id === id);
     if (node?.collapsed && node.jobs.some((j) => this.jobMatches(j))) {
-      // Collapsed nodes already list failed, running and waiting jobs.
-      const shownWhenCollapsed =
-        this.statusFilter === "failure" ||
-        this.statusFilter === "running" ||
-        this.statusFilter === "waiting";
-      if (!shownWhenCollapsed || node.kind === "cluster") {
-        this.userMoved = true;
+      // A collapsed group lists only its first few failed, running and waiting
+      // jobs. Expand it when a matching job is not among them.
+      const shown = new Set(node.kind === "cluster" ? [] : attentionJobs(node));
+      if (node.jobs.some((j) => this.jobMatches(j) && !shown.has(j))) {
+        this.moved();
         this.collapsed.set(id, false);
         await this.refresh(id);
         if (node.kind === "cluster") {
@@ -910,7 +957,8 @@ export class BgavApp {
 
   private applyHeight(): void {
     const layout = this.layout;
-    if (this.fullscreen || !layout) return;
+    // A drag of the resize handle sets the height itself.
+    if (this.fullscreen || !layout || this.resizing) return;
     if (this.prefs.height !== null) {
       this.viewport.style.height = `${Math.max(MIN_HEIGHT, this.prefs.height)}px`;
       return;
@@ -925,7 +973,9 @@ export class BgavApp {
   private onResize(): void {
     // A drag of the resize handle sets the height itself.
     if (!this.layout || this.resizing) return;
-    if (!this.placed || !this.userMoved) {
+    if (this.fitted) {
+      this.fit();
+    } else if (!this.placed || !this.userMoved) {
       this.placed = false;
       this.placeInitially();
     } else {
@@ -936,7 +986,8 @@ export class BgavApp {
   private fit(animate = false): void {
     const layout = this.layout;
     if (!layout) return;
-    // A fitted view stays fitted as the graph changes.
+    // A fitted view stays fitted as the graph and the panel change.
+    this.fitted = true;
     this.userMoved = false;
     const view = this.viewSize();
     this.setTransform(centered(layout, view, fitScale(layout, view)), animate);
@@ -944,7 +995,7 @@ export class BgavApp {
 
   private zoomBy(factor: number): void {
     const view = this.viewSize();
-    this.userMoved = true;
+    this.moved();
     this.setTransform(
       zoomAround(this.transform, this.transform.k * factor, view.width / 2, view.height / 2),
       true,
@@ -953,21 +1004,27 @@ export class BgavApp {
 
   private zoomTo(k: number): void {
     const view = this.viewSize();
-    this.userMoved = true;
+    this.moved();
     this.setTransform(zoomAround(this.transform, k, view.width / 2, view.height / 2), true);
   }
 
   private moveCenterTo(x: number, y: number): void {
     const view = this.viewSize();
     const k = this.transform.k;
-    this.userMoved = true;
+    this.moved();
     this.setTransform({ k, x: view.width / 2 - x * k, y: view.height / 2 - y * k });
   }
 
   private panBy(dx: number, dy: number): void {
     const t = this.transform;
-    this.userMoved = true;
+    this.moved();
     this.setTransform({ ...t, x: t.x + dx, y: t.y + dy }, true);
+  }
+
+  /** The user moved or zoomed the view, so updates keep it where it is. */
+  private moved(): void {
+    this.userMoved = true;
+    this.fitted = false;
   }
 
   private toggleFullscreen(): void {
@@ -979,6 +1036,7 @@ export class BgavApp {
     this.fullscreen = on;
     this.panel.classList.toggle("fullscreen", on);
     document.documentElement.style.overflow = on ? "hidden" : "";
+    this.setPageInert(on);
     this.syncControls();
     requestAnimationFrame(() => {
       if (on) {
@@ -987,10 +1045,30 @@ export class BgavApp {
         // Back inline: size the panel and pick a readable zoom, as on page load.
         this.placed = false;
         this.userMoved = false;
+        this.fitted = false;
         this.placeInitially();
       }
-      this.viewport.focus({ preventScroll: true });
+      if (!this.destroyed) this.viewport.focus({ preventScroll: true });
     });
+  }
+
+  /** Makes everything on the page but BGAV inert, so Tab cannot leave the full-screen panel. */
+  private setPageInert(on: boolean): void {
+    for (const el of this.inerted) el.inert = false;
+    this.inerted = [];
+    if (!on) return;
+    for (
+      let el: HTMLElement | null = this.host;
+      el && el !== document.body;
+      el = el.parentElement
+    ) {
+      for (const sibling of el.parentElement?.children ?? []) {
+        if (sibling !== el && sibling instanceof HTMLElement && !sibling.inert) {
+          sibling.inert = true;
+          this.inerted.push(sibling);
+        }
+      }
+    }
   }
 
   // ---------------------------------------------------------------- events
@@ -1025,6 +1103,7 @@ export class BgavApp {
       this.applyHighlights();
     });
     this.nodeLayer.addEventListener("focusin", (e) => {
+      if (this.restoringFocus) return;
       const id = (e.target as Element).closest<HTMLElement>(".node")?.dataset.id;
       const box = id ? this.layout?.nodes.get(id) : undefined;
       if (box && !isVisible(this.transform, box, this.viewSize())) {
@@ -1120,6 +1199,7 @@ export class BgavApp {
       this.setPref({ height: null });
       this.placed = false;
       this.userMoved = false;
+      this.fitted = false;
       this.placeInitially();
     });
   }
@@ -1228,6 +1308,17 @@ function rebindNodes(layout: Layout, view: ViewGraph): void {
   const fresh = new Map(view.nodes.map((n) => [n.id, n]));
   for (const placed of layout.nodes.values())
     placed.node = fresh.get(placed.node.id) ?? placed.node;
+}
+
+/** Attributes that name the same control across re-renders, most specific first. */
+const FOCUS_ATTRS = ["data-toggle", "data-status", "data-job", "href"];
+
+function focusKey(el: Element): { attr: string; value: string } | undefined {
+  for (const attr of FOCUS_ATTRS) {
+    const value = el.getAttribute(attr);
+    if (value !== null) return { attr, value };
+  }
+  return undefined;
 }
 
 function check(item: HTMLButtonElement, on: boolean): void {

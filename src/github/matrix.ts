@@ -3,6 +3,8 @@ import type { Job } from "../model/types";
 import { parseMatrixJobs } from "./parse";
 
 interface Entry {
+  /** The partial's URL, including `attempt`; a re-run changes it. */
+  url: string;
   jobs?: Job[];
   /** GitHub's collapsed summary when the jobs were fetched; a change means new data. */
   signature?: string;
@@ -34,7 +36,7 @@ class HttpError extends Error {
  */
 export class MatrixLoader {
   private entries = new Map<string, Entry>();
-  private queue: { cardId: string; url: string }[] = [];
+  private queue: { cardId: string; url: string; entry: Entry }[] = [];
   private running = 0;
 
   constructor(private readonly onLoad: () => void) {}
@@ -53,9 +55,12 @@ export class MatrixLoader {
    * queued or waiting, which also covers a matrix whose jobs do not exist yet.
    */
   sync(cardId: string, url: string, signature: string, running = false): void {
+    const key = normalizeUrl(url);
     const entry = this.entries.get(cardId);
-    if (!entry) {
+    // A different URL is a different matrix (such as a re-run attempt): start over.
+    if (!entry || entry.url !== key) {
       this.entries.set(cardId, {
+        url: key,
         fetchedAt: 0,
         inFlight: false,
         failed: false,
@@ -70,15 +75,15 @@ export class MatrixLoader {
     // GitHub re-renders the collapsed summary when a matrix job finishes, which
     // changes the signature. Job starts do not change it, so poll while jobs run.
     const changed = entry.signature !== signature;
+    // After a failure, every retry waits out the backoff, even when the summary changed.
     const due = entry.failed
       ? entry.retryable &&
         entry.failures < MAX_FAILURES &&
         age > ACTIVE_REFRESH_MS * 2 ** (entry.failures - 1)
-      : age > ACTIVE_REFRESH_MS &&
-        (running || (entry.jobs?.some((j) => isActive(j.status)) ?? false));
-    if (due || (changed && (!entry.failed || entry.retryable))) {
-      this.enqueue(cardId, url, signature);
-    }
+      : changed ||
+        (age > ACTIVE_REFRESH_MS &&
+          (running || (entry.jobs?.some((j) => isActive(j.status)) ?? false)));
+    if (due) this.enqueue(cardId, url, signature);
   }
 
   clear(): void {
@@ -91,7 +96,7 @@ export class MatrixLoader {
     if (!entry) return;
     entry.inFlight = true;
     if (signature !== undefined) entry.signature = signature;
-    this.queue.push({ cardId, url });
+    this.queue.push({ cardId, url, entry });
     this.pump();
   }
 
@@ -100,16 +105,16 @@ export class MatrixLoader {
       const next = this.queue.shift();
       if (!next) break;
       this.running++;
-      void this.load(next.cardId, next.url).finally(() => {
+      void this.load(next.cardId, next.url, next.entry).finally(() => {
         this.running--;
         this.pump();
       });
     }
   }
 
-  private async load(cardId: string, url: string): Promise<void> {
-    const entry = this.entries.get(cardId);
-    if (!entry) return;
+  private async load(cardId: string, url: string, entry: Entry): Promise<void> {
+    // The entry was replaced or cleared while this request waited in the queue.
+    if (this.entries.get(cardId) !== entry) return;
     try {
       const target = new URL(url, location.origin);
       target.searchParams.set("expanded", "true");
@@ -118,10 +123,13 @@ export class MatrixLoader {
         headers: { "X-Requested-With": "XMLHttpRequest", Accept: "text/html" },
       });
       if (!response.ok) throw new HttpError(response.status);
-      entry.jobs = parseMatrixJobs(await response.text(), cardId);
+      const html = await response.text();
+      if (this.entries.get(cardId) !== entry) return;
+      entry.jobs = parseMatrixJobs(html, cardId);
       entry.failed = false;
       entry.failures = 0;
     } catch (error) {
+      if (this.entries.get(cardId) !== entry) return;
       entry.failed = true;
       entry.failures++;
       // Client errors other than rate limits will fail the same way again.
@@ -134,4 +142,11 @@ export class MatrixLoader {
     }
     if (this.entries.get(cardId) === entry) this.onLoad();
   }
+}
+
+function normalizeUrl(url: string): string {
+  const parsed = new URL(url, location.origin);
+  parsed.searchParams.delete("expanded");
+  parsed.searchParams.sort();
+  return parsed.pathname + parsed.search;
 }

@@ -189,3 +189,35 @@ describe("run status", () => {
     expect(nextStatus(pendingRun("failure"))).toBe("skipped");
   });
 });
+
+describe("cluster status", () => {
+  // A finished job and a matrix whose jobs have not loaded share the caller "rw".
+  // GitHub's collapsed summary says the matrix failed.
+  const run: RunGraph = {
+    cards: [
+      jobCard("a", 10, "rw"),
+      {
+        id: "m",
+        kind: "matrix",
+        title: "test",
+        path: ["rw"],
+        jobs: [],
+        matrix: { url: "/m", summary: "1 job failed", summaryStatus: "failure" },
+        stage: 1,
+        order: 0,
+      },
+    ],
+    edges: [{ from: "a", to: "m" }],
+    runStatus: "failure",
+  };
+
+  it("counts an unloaded matrix's summary in an expanded cluster", () => {
+    const view = buildView(run, options());
+    expect(view.clusters.find((c) => c.id === clusterId("rw"))?.status).toBe("failure");
+  });
+
+  it("counts an unloaded matrix's summary in a collapsed cluster", () => {
+    const view = buildView(run, options({ collapsed: new Map([[clusterId("rw"), true]]) }));
+    expect(view.nodes.find((n) => n.id === clusterId("rw"))?.status).toBe("failure");
+  });
+});

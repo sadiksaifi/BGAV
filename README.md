@@ -53,7 +53,7 @@ pnpm build
 
 Then open `chrome://extensions`, turn on Developer mode, click "Load unpacked", and pick the `dist` folder. It works in any Chromium browser, version 111 or later.
 
-The extension asks for one permission, `storage`, to remember your settings. It reads the run page you are on and fetches matrix job lists from github.com with your existing session. Nothing is sent anywhere else.
+The extension asks for two things. The `storage` permission remembers your settings. Access to github.com lets it run on your pages there; Chrome shows this as "Read and change your data on github.com". The script stays idle until you open an Actions run page. On a run page it reads the graph and fetches matrix job lists from github.com with your existing session. Nothing is sent anywhere else.
 
 ## Development
 

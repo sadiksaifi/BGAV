@@ -10,6 +10,8 @@ const RUNNING_JOB = `<streaming-graph-job data-job-id="1" data-external-id="x">
   </a>
 </streaming-graph-job>`;
 
+const ignore = () => {};
+
 /** Lets the loader's fetch and its handlers run. */
 const settle = () => new Promise((resolve) => setTimeout(resolve, 0));
 
@@ -92,5 +94,47 @@ describe("MatrixLoader", () => {
     now += 3_600_000;
     await sync(loader, true, "running|1/2");
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+  it("waits out the backoff when a failed matrix's summary changes", async () => {
+    const loader = new MatrixLoader(() => {});
+    respond(500);
+    await sync(loader, true, "running|0/2");
+    await sync(loader, true, "running|1/2");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("starts over when the matrix URL changes, such as on a re-run", async () => {
+    const loader = new MatrixLoader(() => {});
+    respond(404);
+    await sync(loader, false);
+    expect(loader.failed("card")).toBe(true);
+
+    respond(200, RUNNING_JOB);
+    loader.sync("card", URL.replace("attempt=1", "attempt=2"), "running|0/2", true);
+    await settle();
+    await settle();
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(loader.failed("card")).toBe(false);
+    expect(loader.jobs("card")?.[0]?.status).toBe("running");
+  });
+
+  it("ignores a response for a URL that was replaced", async () => {
+    const loader = new MatrixLoader(() => {});
+    let finish: (response: Response) => void = ignore;
+    fetchMock.mockReturnValueOnce(
+      new Promise((resolve) => {
+        finish = resolve;
+      }),
+    );
+    loader.sync("card", URL, "running|0/2", true);
+    await settle();
+    respond(200);
+    loader.sync("card", URL.replace("attempt=1", "attempt=2"), "running|0/2", true);
+    await settle();
+    await settle();
+    finish(new Response(RUNNING_JOB, { status: 200 }));
+    await settle();
+    await settle();
+    expect(loader.jobs("card")).toEqual([]);
   });
 });
