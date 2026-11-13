@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { graphFixture } from "../test/fixtures";
-import type { Edge } from "./types";
+import type { Card, Edge, RunGraph, Status } from "./types";
 import {
   buildView,
   clusterId,
@@ -105,8 +105,49 @@ describe("buildView", () => {
   });
 });
 
+/** A one-job card; `caller` puts it in a reusable workflow call. */
+function jobCard(id: string, seconds: number, caller?: string, status: Status = "success"): Card {
+  const path = caller ? [caller] : [];
+  return {
+    id,
+    kind: "job",
+    title: id,
+    path,
+    jobs: [{ key: id, jobId: id, name: id, path, status, durationSec: seconds }],
+    stage: 0,
+    order: 0,
+  };
+}
+
 describe("criticalPath", () => {
+  // a (60 s) and b (90 s) run in sequence inside the reusable workflow "rw",
+  // then c (10 s). The branch d (120 s) also feeds c, but is shorter.
+  const run: RunGraph = {
+    cards: [jobCard("a", 60, "rw"), jobCard("b", 90, "rw"), jobCard("c", 10), jobCard("d", 120)],
+    edges: [
+      { from: "a", to: "b" },
+      { from: "b", to: "c" },
+      { from: "d", to: "c" },
+    ],
+  };
+
   it("follows the longest chain of durations", () => {
+    const path = criticalPath(buildView(run, options()), Date.now());
+    expect(path.seconds).toBe(160);
+    expect(path.nodes).toEqual(new Set(["a", "b", "c"]));
+    expect(path.edges).toEqual(new Set(["a\nb", "b\nc"]));
+  });
+
+  it("keeps the chain inside a collapsed cluster", () => {
+    const id = clusterId("rw");
+    const view = buildView(run, options({ collapsed: new Map([[id, true]]) }));
+    const path = criticalPath(view, Date.now());
+    expect(path.seconds).toBe(160);
+    expect(path.nodes).toEqual(new Set([id, "c"]));
+    expect(path.edges).toEqual(new Set([`${id}\nc`]));
+  });
+
+  it("finds a chain in a real pipeline", () => {
     const view = buildView(graphFixture("uv-graph.html"), options({ simplifyEdges: false }));
     const path = criticalPath(view, Date.now());
     expect(path.nodes.size).toBeGreaterThan(1);
@@ -126,5 +167,25 @@ describe("settled runs", () => {
     const view = buildView(graphFixture("rust-running-graph.html"), options());
     const pending = view.nodes.flatMap((n) => n.jobs).filter((j) => j.status === "pending");
     expect(pending.length).toBeGreaterThan(0);
+  });
+});
+
+const pendingRun = (runStatus?: Status): RunGraph => ({
+  cards: [jobCard("done", 30), jobCard("next", 0, undefined, "pending")],
+  edges: [{ from: "done", to: "next" }],
+  ...(runStatus ? { runStatus } : {}),
+});
+const nextStatus = (run: RunGraph) =>
+  buildView(run, options()).nodes.find((n) => n.id === "next")?.status;
+
+describe("run status", () => {
+  it("keeps pending jobs pending while the run is in progress", () => {
+    // Between jobs, nothing is running, queued or waiting for a moment.
+    expect(nextStatus(pendingRun("running"))).toBe("pending");
+  });
+
+  it("shows pending jobs as skipped once the run has finished", () => {
+    expect(nextStatus(pendingRun("success"))).toBe("skipped");
+    expect(nextStatus(pendingRun("failure"))).toBe("skipped");
   });
 });

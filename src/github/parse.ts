@@ -1,11 +1,27 @@
 import { parseDuration } from "../lib/duration";
-import type { Card, CardKind, Edge, Job, MatrixInfo, RunGraph } from "../model/types";
+import type { Card, CardKind, Edge, Job, MatrixInfo, RunGraph, Status } from "../model/types";
 import { statusFromIcon } from "./status";
 
 /** The element GitHub renders the run graph in. It is replaced on live updates. */
 export const GRAPH_REGION_SELECTOR = '[role="region"][aria-label="Workflow run graph"]';
 
 const clean = (text: string | null | undefined): string => (text ?? "").replace(/\s+/g, " ").trim();
+
+/** The "Status" value in the run summary next to the graph, such as `Success` or `In progress`. */
+export function findRunStatusElement(root: ParentNode = document): Element | null {
+  for (const label of root.querySelectorAll("span.color-fg-muted")) {
+    if (clean(label.textContent) === "Status") return label.nextElementSibling;
+  }
+  return null;
+}
+
+/** The run's own status, or undefined when the summary is missing or unfamiliar. */
+export function readRunStatus(root: ParentNode = document): Status | undefined {
+  const text = clean(findRunStatusElement(root)?.textContent);
+  if (!text) return undefined;
+  const status = statusFromIcon(text, null);
+  return status === "unknown" ? undefined : status;
+}
 
 export function findGraphRegion(root: ParentNode = document): Element | null {
   return (

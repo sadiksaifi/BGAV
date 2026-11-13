@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { fixture, graphFixture } from "../test/fixtures";
-import { parseMatrixJobs } from "./parse";
+import { parseMatrixJobs, readRunStatus } from "./parse";
 
 describe("parseGraph", () => {
   it("reads every card, job and edge of a large completed run", () => {
@@ -70,5 +70,27 @@ describe("parseMatrixJobs", () => {
       "cargo test on windows 3 of 3",
     ]);
     expect(jobs.every((j) => j.status === "success" && j.path[0] === "test")).toBe(true);
+  });
+});
+
+/** A run summary with the given status value, as GitHub renders it. */
+const summary = (value: string) => {
+  const root = document.createElement("div");
+  root.innerHTML = `<div><span class="mb-1 d-block text-small color-fg-muted">Status</span>
+    <span class="h4 color-fg-default">${value}</span></div>`;
+  return root;
+};
+
+describe("readRunStatus", () => {
+  it("reads the status from the run summary", () => {
+    expect(readRunStatus(summary("Success"))).toBe("success");
+    expect(readRunStatus(summary("In progress"))).toBe("running");
+    expect(readRunStatus(summary("Queued"))).toBe("queued");
+    expect(readRunStatus(summary("Failure"))).toBe("failure");
+    expect(readRunStatus(summary("Cancelled"))).toBe("cancelled");
+  });
+
+  it("is undefined without a summary", () => {
+    expect(readRunStatus(document.createElement("div"))).toBeUndefined();
   });
 });

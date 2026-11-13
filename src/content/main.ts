@@ -1,4 +1,11 @@
-import { findGraphRegion, GRAPH_REGION_SELECTOR, parseGraph } from "../github/parse";
+import {
+  findGraphRegion,
+  findRunStatusElement,
+  GRAPH_REGION_SELECTOR,
+  parseGraph,
+  readRunStatus,
+} from "../github/parse";
+import type { RunGraph } from "../model/types";
 import { loadPrefs, type Prefs } from "../lib/prefs";
 import { BgavApp } from "../view/app";
 import { isRunPage } from "./route";
@@ -16,6 +23,11 @@ let observer: MutationObserver | undefined;
 let parseTimer = 0;
 let prefs: Promise<Prefs> | undefined;
 let mounting = false;
+/** The graph the user picked; GitHub's graph also shows while BGAV has a problem. */
+let userMode: Prefs["mode"] = "bgav";
+let problem = false;
+/** The run summary's status value; its changes trigger a parse too. */
+let statusEl: Element | null = null;
 
 function ensurePageStyle(): void {
   if (document.getElementById("bgav-page-style")) return;
@@ -30,6 +42,10 @@ function setMode(mode: Prefs["mode"] | null): void {
   else document.documentElement.removeAttribute(MODE_ATTR);
 }
 
+function applyPageMode(): void {
+  setMode(problem ? null : userMode);
+}
+
 function unmount(): void {
   window.clearTimeout(parseTimer);
   observer?.disconnect();
@@ -37,6 +53,8 @@ function unmount(): void {
   app?.destroy();
   app = undefined;
   region = null;
+  statusEl = null;
+  problem = false;
   setMode(null);
 }
 
@@ -48,13 +66,24 @@ function parseNow(): void {
     region = current;
     current.before(app.host);
   }
+  let run: RunGraph;
   try {
-    app.update(parseGraph(current));
+    run = parseGraph(current);
   } catch (error) {
     console.error("[BGAV] Could not read the run graph", error);
-    app.showError();
-    setMode(null);
+    app.setReadable(false);
+    return;
   }
+  // A run graph always has cards. None means GitHub changed its markup.
+  if (run.cards.length === 0) {
+    console.warn("[BGAV] Found no jobs in the run graph");
+    app.setReadable(false);
+    return;
+  }
+  statusEl = findRunStatusElement();
+  run.runStatus = readRunStatus();
+  app.setReadable(true);
+  app.update(run);
 }
 
 function scheduleParse(): void {
@@ -64,9 +93,12 @@ function scheduleParse(): void {
 
 function relevant(mutations: MutationRecord[]): boolean {
   if (!region?.isConnected) return true;
+  // GitHub replaced the run summary; a parse finds the new status value.
+  if (statusEl && !statusEl.isConnected) return true;
   for (const m of mutations) {
     if (app?.host.contains(m.target)) continue;
     if (region.contains(m.target)) return true;
+    if (statusEl?.contains(m.target)) return true;
     for (const node of m.addedNodes) {
       if (
         node instanceof Element &&
@@ -89,16 +121,22 @@ async function mount(): Promise<void> {
     const loaded = await prefs;
     if (app || !isRunPage(location.pathname)) return;
     ensurePageStyle();
+    userMode = loaded.mode;
+    problem = false;
     app = new BgavApp(loaded, {
       onModeChange: (mode) => {
         prefs = Promise.resolve({ ...loaded, mode });
-        setMode(mode);
+        userMode = mode;
+        applyPageMode();
       },
-      onError: () => setMode(null),
+      onProblemChange: (value) => {
+        problem = value;
+        applyPageMode();
+      },
     });
     region = found;
     found.before(app.host);
-    setMode(loaded.mode);
+    applyPageMode();
     observer = new MutationObserver((mutations) => {
       if (relevant(mutations)) scheduleParse();
     });

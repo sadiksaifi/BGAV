@@ -15,7 +15,7 @@
   "ignorePatterns": ["dist/**"],
   "overrides": [
     {
-      "files": ["scripts/**"],
+      "files": ["scripts/**", "src/**/*.test.ts"],
       "rules": {
         "no-await-in-loop": "off"
       }

@@ -9,11 +9,23 @@ interface Entry {
   fetchedAt: number;
   inFlight: boolean;
   failed: boolean;
+  /** Failed fetches in a row. */
+  failures: number;
+  /** False after an error that a retry cannot fix, such as a 404. */
+  retryable: boolean;
 }
 
 const MAX_CONCURRENT = 4;
 /** How often to refetch a matrix that still has unfinished jobs. */
 const ACTIVE_REFRESH_MS = 15_000;
+/** Retries after a failed fetch wait 15 s, 30 s, 60 s and 120 s, then stop. */
+const MAX_FAILURES = 5;
+
+class HttpError extends Error {
+  constructor(readonly status: number) {
+    super(`HTTP ${status}`);
+  }
+}
 
 /**
  * Fetches the full job list of matrix cards. GitHub's own graph only shows a
@@ -35,22 +47,38 @@ export class MatrixLoader {
     return this.entries.get(cardId)?.failed ?? false;
   }
 
-  /** Requests a fetch when the matrix is new, its summary changed, or it is still running. */
-  sync(cardId: string, url: string, signature: string): void {
+  /**
+   * Requests a fetch when the matrix is new, its summary changed, or it is still
+   * running. `running` is true while GitHub's summary says jobs are running,
+   * queued or waiting, which also covers a matrix whose jobs do not exist yet.
+   */
+  sync(cardId: string, url: string, signature: string, running = false): void {
     const entry = this.entries.get(cardId);
     if (!entry) {
-      this.entries.set(cardId, { fetchedAt: 0, inFlight: false, failed: false });
+      this.entries.set(cardId, {
+        fetchedAt: 0,
+        inFlight: false,
+        failed: false,
+        failures: 0,
+        retryable: true,
+      });
       this.enqueue(cardId, url, signature);
       return;
     }
     if (entry.inFlight) return;
-    const changed = entry.signature !== signature;
+    const age = Date.now() - entry.fetchedAt;
     // GitHub re-renders the collapsed summary when a matrix job finishes, which
     // changes the signature. Job starts do not change it, so poll while jobs run.
-    const stale =
-      Date.now() - entry.fetchedAt > ACTIVE_REFRESH_MS &&
-      (entry.failed || (entry.jobs?.some((j) => isActive(j.status)) ?? false));
-    if (changed || stale) this.enqueue(cardId, url, signature);
+    const changed = entry.signature !== signature;
+    const due = entry.failed
+      ? entry.retryable &&
+        entry.failures < MAX_FAILURES &&
+        age > ACTIVE_REFRESH_MS * 2 ** (entry.failures - 1)
+      : age > ACTIVE_REFRESH_MS &&
+        (running || (entry.jobs?.some((j) => isActive(j.status)) ?? false));
+    if (due || (changed && (!entry.failed || entry.retryable))) {
+      this.enqueue(cardId, url, signature);
+    }
   }
 
   clear(): void {
@@ -89,11 +117,16 @@ export class MatrixLoader {
         credentials: "same-origin",
         headers: { "X-Requested-With": "XMLHttpRequest", Accept: "text/html" },
       });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      if (!response.ok) throw new HttpError(response.status);
       entry.jobs = parseMatrixJobs(await response.text(), cardId);
       entry.failed = false;
+      entry.failures = 0;
     } catch (error) {
       entry.failed = true;
+      entry.failures++;
+      // Client errors other than rate limits will fail the same way again.
+      if (error instanceof HttpError && error.status >= 400 && error.status < 500)
+        entry.retryable = error.status === 429;
       console.warn("[BGAV] Could not load matrix jobs", url, error);
     } finally {
       entry.fetchedAt = Date.now();

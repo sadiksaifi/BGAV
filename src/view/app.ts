@@ -5,14 +5,7 @@ import { h, s } from "../lib/dom";
 import { formatDuration } from "../lib/duration";
 import { type Prefs, savePrefs } from "../lib/prefs";
 import type { Job, RunGraph, Status } from "../model/types";
-import {
-  buildView,
-  criticalPath,
-  lineage,
-  nodeSeconds,
-  type ViewGraph,
-  type ViewNode,
-} from "../model/view";
+import { buildView, criticalPath, lineage, type ViewGraph, type ViewNode } from "../model/view";
 import { icon, statusIcon } from "./icons";
 import { Minimap } from "./minimap";
 import type { OcticonName } from "./octicons";
@@ -51,7 +44,8 @@ export interface AppHooks {
   /** Called when the user switches between BGAV and GitHub's graph. */
   onModeChange: (mode: Prefs["mode"]) => void;
   /** Called when BGAV cannot draw the graph, so GitHub's graph can show instead. */
-  onError: (error: unknown) => void;
+  /** BGAV cannot draw this run (true) or can again (false); GitHub's graph shows meanwhile. */
+  onProblemChange: (problem: boolean) => void;
 }
 
 export class BgavApp {
@@ -65,6 +59,15 @@ export class BgavApp {
   private readonly nodeLayer: HTMLElement;
   private readonly minimap: Minimap;
   private readonly nativeBar: HTMLElement;
+  private readonly nativeButton: HTMLButtonElement;
+  /** GitHub's markup could not be read into a graph. */
+  private parseProblem = false;
+  /** ELK failed on the current graph. */
+  private layoutProblem = false;
+  /** A layout is being computed; in-place updates wait for it. */
+  private layoutPending = false;
+  /** The user is dragging the resize handle. */
+  private resizing = false;
   private readonly brand: HTMLElement;
   private readonly chips: HTMLElement;
   private readonly search: HTMLElement;
@@ -146,19 +149,19 @@ export class BgavApp {
     });
 
     this.menuItems = {
-      simplify: this.menuItem(
+      simplify: this.menuToggle(
         "git-merge",
         "Simplify edges",
         "Hide edges already implied by a longer path",
         () => this.setPref({ simplifyEdges: !this.prefs.simplifyEdges }),
       ),
-      critical: this.menuItem(
+      critical: this.menuToggle(
         "zap",
         "Critical path",
         "Highlight the chain of jobs that decided the run time",
         () => this.toggleCritical(),
       ),
-      minimap: this.menuItem(
+      minimap: this.menuToggle(
         "graph",
         "Overview map",
         "Show a map of the whole graph when it does not fit",
@@ -175,9 +178,7 @@ export class BgavApp {
       this.menuItem("unfold", "Expand all groups", "Shortcut: E", () =>
         this.setAllCollapsed(false),
       ),
-      this.menuItem("fold", "Collapse large groups", "Shortcut: C", () =>
-        this.setAllCollapsed(true),
-      ),
+      this.menuItem("fold", "Collapse all groups", "Shortcut: C", () => this.setAllCollapsed(true)),
       h("div", { class: "sep", role: "separator" }),
       this.menuItem("arrow-switch", "Show GitHub's graph", "Switch back to GitHub's graph", () =>
         this.setMode("native"),
@@ -248,16 +249,13 @@ export class BgavApp {
       "aria-hidden": "true",
     });
     this.panel = h("div", { class: "panel" }, toolbar, this.viewport, resize);
-    this.nativeBar = h(
-      "div",
-      { class: "native-bar", hidden: true },
-      this.button({
-        icon: "arrow-switch",
-        text: "Show BGAV graph",
-        title: "Switch to the BGAV graph",
-        onClick: () => this.setMode("bgav"),
-      }),
-    );
+    this.nativeButton = this.button({
+      icon: "arrow-switch",
+      text: "Show BGAV graph",
+      title: "Switch to the BGAV graph",
+      onClick: () => this.setMode("bgav"),
+    });
+    this.nativeBar = h("div", { class: "native-bar", hidden: true }, this.nativeButton);
     this.shadow.append(h("style", {}, css), this.panel, this.nativeBar);
 
     this.cleanups.push(
@@ -293,6 +291,20 @@ export class BgavApp {
     this.scheduleRefresh();
   }
 
+  /**
+   * Called for every parse of GitHub's graph. While the markup cannot be read,
+   * GitHub's graph shows with a note; the next good parse brings BGAV back.
+   */
+  setReadable(readable: boolean): void {
+    if (this.parseProblem === !readable) return;
+    this.parseProblem = !readable;
+    this.syncProblem();
+  }
+
+  private get native(): boolean {
+    return this.prefs.mode === "native";
+  }
+
   destroy(): void {
     for (const cleanup of this.cleanups) cleanup();
     this.loader.clear();
@@ -315,21 +327,38 @@ export class BgavApp {
     this.setPref({ mode });
     this.applyMode();
     this.hooks.onModeChange(mode);
+    // GitHub's graph mode skips matrix loading and layout, so catch up now.
+    if (mode === "bgav") this.syncMatrices();
+  }
+
+  private get problem(): boolean {
+    return this.parseProblem || this.layoutProblem;
   }
 
   private applyMode(): void {
-    const native = this.prefs.mode === "native";
-    this.panel.hidden = native;
-    this.nativeBar.hidden = !native;
+    if (this.problem) {
+      // Falls back to GitHub's graph with a note when BGAV cannot draw this run.
+      this.panel.hidden = true;
+      this.nativeBar.hidden = false;
+      this.nativeBar.replaceChildren(
+        h(
+          "span",
+          { class: "error" },
+          "BGAV could not read this graph, so GitHub's graph is shown.",
+        ),
+      );
+      return;
+    }
+    this.panel.hidden = this.native;
+    this.nativeBar.hidden = !this.native;
+    this.nativeBar.replaceChildren(this.nativeButton);
   }
 
-  /** Falls back to GitHub's graph with a note when BGAV cannot draw this run. */
-  showError(): void {
-    this.panel.hidden = true;
-    this.nativeBar.hidden = false;
-    this.nativeBar.replaceChildren(
-      h("span", { class: "error" }, "BGAV could not draw this graph, so GitHub's graph is shown."),
-    );
+  private syncProblem(): void {
+    if (this.problem) this.setFullscreen(false);
+    this.applyMode();
+    this.hooks.onProblemChange(this.problem);
+    if (!this.problem) this.scheduleRefresh();
   }
 
   private toggleCritical(): void {
@@ -362,12 +391,14 @@ export class BgavApp {
   }
 
   private syncMatrices(): void {
+    if (this.native || this.parseProblem) return;
     for (const card of this.run?.cards ?? []) {
       if (card.matrix) {
         this.loader.sync(
           card.id,
           card.matrix.url,
           `${card.matrix.summaryStatus}|${card.matrix.summary}`,
+          RUNNING.has(card.matrix.summaryStatus),
         );
       }
     }
@@ -426,7 +457,8 @@ export class BgavApp {
 
   private async refresh(anchorId?: string): Promise<void> {
     const run = this.run;
-    if (!run) return;
+    // GitHub's graph is showing, so there is nothing to draw.
+    if (!run || this.native || this.parseProblem) return;
     const view = buildView(run, {
       collapsed: this.collapsed,
       simplifyEdges: this.prefs.simplifyEdges,
@@ -439,23 +471,33 @@ export class BgavApp {
     if (sig !== this.layoutSig || !this.layout) {
       this.layoutSig = sig;
       const token = ++this.layoutToken;
+      this.layoutPending = true;
       let layout: Layout;
       try {
         layout = await layoutGraph(view);
       } catch (error) {
+        if (token !== this.layoutToken) return;
         console.error("[BGAV] Layout failed", error);
-        this.showError();
-        this.hooks.onError(error);
+        this.layoutPending = false;
+        // Retry on the next update instead of drawing onto the old layout.
+        this.layoutSig = "";
+        this.layoutProblem = true;
+        this.syncProblem();
         return;
       }
       if (token !== this.layoutToken) return;
+      this.layoutPending = false;
+      // Statuses may have changed while ELK ran; draw the newest ones.
+      rebindNodes(layout, this.view ?? view);
       this.applyLayout(layout, anchorId);
-    } else {
+      if (this.layoutProblem) {
+        this.layoutProblem = false;
+        this.syncProblem();
+      }
+    } else if (!this.layoutPending) {
       // Same structure: refresh node contents in place.
       const layout = this.layout;
-      const fresh = new Map(view.nodes.map((n) => [n.id, n]));
-      for (const placed of layout.nodes.values())
-        placed.node = fresh.get(placed.node.id) ?? placed.node;
+      rebindNodes(layout, view);
       this.renderNodes(layout);
       this.renderBack(layout);
       if (!this.minimap.el.hidden) this.minimap.draw(this.transform, this.viewSize());
@@ -543,20 +585,13 @@ export class BgavApp {
       chips.push(chip);
     }
     if (this.critical && this.view) {
-      const now = Date.now();
-      const path = criticalPath(this.view, now);
-      const byId = new Map(this.view.nodes.map((n) => [n.id, n]));
-      let total = 0;
-      for (const id of path.nodes) {
-        const node = byId.get(id);
-        if (node) total += nodeSeconds(node, now);
-      }
+      const path = criticalPath(this.view, Date.now());
       chips.push(
         h(
           "span",
           { class: "chip crit", title: "Sum of the longest job in each step of the critical path" },
           icon("zap", "", 14),
-          `Critical path ${formatDuration(total)}`,
+          `Critical path ${formatDuration(path.seconds)}`,
         ),
       );
     }
@@ -676,6 +711,7 @@ export class BgavApp {
   }
 
   private tick(): void {
+    if (this.native || this.problem) return;
     const now = Date.now();
     for (const el of this.shadow.querySelectorAll<HTMLElement>(".dur.live[data-started]")) {
       const text = formatDuration((now - Number(el.dataset.started)) / 1000);
@@ -887,7 +923,8 @@ export class BgavApp {
   }
 
   private onResize(): void {
-    if (!this.layout) return;
+    // A drag of the resize handle sets the height itself.
+    if (!this.layout || this.resizing) return;
     if (!this.placed || !this.userMoved) {
       this.placed = false;
       this.placeInitially();
@@ -942,10 +979,16 @@ export class BgavApp {
     this.fullscreen = on;
     this.panel.classList.toggle("fullscreen", on);
     document.documentElement.style.overflow = on ? "hidden" : "";
-    if (!on) this.applyHeight();
     this.syncControls();
     requestAnimationFrame(() => {
-      this.fit();
+      if (on) {
+        this.fit();
+      } else {
+        // Back inline: size the panel and pick a readable zoom, as on page load.
+        this.placed = false;
+        this.userMoved = false;
+        this.placeInitially();
+      }
       this.viewport.focus({ preventScroll: true });
     });
   }
@@ -1054,6 +1097,7 @@ export class BgavApp {
     // Resize handle for the inline panel.
     resize.addEventListener("pointerdown", (e) => {
       e.preventDefault();
+      this.resizing = true;
       resize.setPointerCapture(e.pointerId);
       const startY = e.clientY;
       const startHeight = this.viewport.clientHeight;
@@ -1065,6 +1109,7 @@ export class BgavApp {
         resize.removeEventListener("pointermove", move);
         resize.removeEventListener("pointerup", up);
         resize.removeEventListener("pointercancel", up);
+        this.resizing = false;
         this.setPref({ height: this.viewport.clientHeight });
       };
       resize.addEventListener("pointermove", move);
@@ -1145,6 +1190,18 @@ export class BgavApp {
     return b;
   }
 
+  /** A menu item with an on and off state, announced through `aria-checked`. */
+  private menuToggle(
+    name: OcticonName,
+    label: string,
+    title: string,
+    onClick: () => void,
+  ): HTMLButtonElement {
+    const b = this.menuItem(name, label, title, onClick);
+    b.setAttribute("role", "menuitemcheckbox");
+    return b;
+  }
+
   private menuItem(
     name: OcticonName,
     label: string,
@@ -1161,6 +1218,16 @@ export class BgavApp {
     b.addEventListener("click", onClick);
     return b;
   }
+}
+
+/** Matrix summaries that mean jobs are still being created or run. */
+const RUNNING = new Set<Status>(["running", "queued", "waiting"]);
+
+/** Points a layout's placed nodes at the matching nodes of a newer view with the same structure. */
+function rebindNodes(layout: Layout, view: ViewGraph): void {
+  const fresh = new Map(view.nodes.map((n) => [n.id, n]));
+  for (const placed of layout.nodes.values())
+    placed.node = fresh.get(placed.node.id) ?? placed.node;
 }
 
 function check(item: HTMLButtonElement, on: boolean): void {

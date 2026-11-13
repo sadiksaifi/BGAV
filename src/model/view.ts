@@ -1,4 +1,4 @@
-import { aggregateStatus } from "../github/status";
+import { aggregateStatus, isActive } from "../github/status";
 import type { Card, Edge, Job, RunGraph, Status } from "./types";
 
 /** Groups and matrices with more jobs than this start collapsed. */
@@ -42,6 +42,11 @@ export interface ViewGraph {
   edges: Edge[];
   /** Every dependency between displayed nodes. */
   allEdges: Edge[];
+  /**
+   * Jobs and dependencies per GitHub card, with the displayed node each card is
+   * part of. Timing uses these, so collapsing a cluster does not change it.
+   */
+  timing: { jobs: Map<string, Job[]>; edges: Edge[]; owner: Map<string, string> };
 }
 
 export interface ViewOptions {
@@ -84,16 +89,20 @@ export function buildView(run: RunGraph, options: ViewOptions): ViewGraph {
 
   const rawJobs = (card: Card): Job[] =>
     card.kind === "matrix" ? (options.matrixJobs(card.id) ?? card.jobs) : card.jobs;
-  // Once nothing is running, queued or waiting, jobs still marked pending will
-  // never start. GitHub's job list shows them as skipped, so BGAV does too.
-  const settled = !run.cards.some(
-    (card) =>
-      rawJobs(card).some(
-        (j) => j.status === "running" || j.status === "queued" || j.status === "waiting",
-      ) ||
-      (card.matrix !== undefined &&
-        ["running", "queued", "waiting"].includes(card.matrix.summaryStatus)),
-  );
+  // Once the run has finished, jobs still marked pending will never start.
+  // GitHub's job list shows them as skipped, so BGAV does too. Without the run's
+  // own status, a run with nothing running, queued or waiting counts as finished.
+  const settled =
+    run.runStatus !== undefined
+      ? !isActive(run.runStatus)
+      : !run.cards.some(
+          (card) =>
+            rawJobs(card).some(
+              (j) => j.status === "running" || j.status === "queued" || j.status === "waiting",
+            ) ||
+            (card.matrix !== undefined &&
+              ["running", "queued", "waiting"].includes(card.matrix.summaryStatus)),
+        );
   const cardJobs = (card: Card): Job[] => (settled ? rawJobs(card).map(notRun) : rawJobs(card));
 
   const nodes: ViewNode[] = [];
@@ -101,8 +110,10 @@ export function buildView(run: RunGraph, options: ViewOptions): ViewGraph {
   const collapsedClusterNodes = new Map<string, ViewNode>();
   const remap = new Map<string, string>();
 
+  const timingJobs = new Map<string, Job[]>();
   for (const card of run.cards) {
     const jobs = cardJobs(card);
+    timingJobs.set(card.id, jobs);
     const caller = clusterOf.get(card.id);
     if (caller === undefined) {
       remap.set(card.id, card.id);
@@ -178,6 +189,11 @@ export function buildView(run: RunGraph, options: ViewOptions): ViewGraph {
     clusters: expandedClusters,
     allEdges,
     edges: options.simplifyEdges ? transitiveReduction(allEdges) : allEdges,
+    timing: {
+      jobs: timingJobs,
+      edges: run.edges.filter((e) => timingJobs.has(e.from) && timingJobs.has(e.to)),
+      owner: remap,
+    },
   };
 }
 
@@ -283,30 +299,37 @@ export function lineage(id: string, edges: readonly Edge[]): Set<string> {
   return result;
 }
 
-/** Seconds a node took: its longest job, counting running jobs up to `now`. */
-export function nodeSeconds(node: ViewNode, now: number): number {
+/** Seconds a set of parallel jobs took: the longest one, counting running jobs up to `now`. */
+function jobsSeconds(jobs: readonly Job[], now: number): number {
   let longest = 0;
-  for (const job of node.jobs) {
+  for (const job of jobs) {
     const sec = job.durationSec ?? (job.startedAt !== undefined ? (now - job.startedAt) / 1000 : 0);
     if (sec > longest) longest = sec;
   }
   return longest;
 }
 
+/** Seconds a node took: its longest job, counting running jobs up to `now`. */
+export function nodeSeconds(node: ViewNode, now: number): number {
+  return jobsSeconds(node.jobs, now);
+}
+
 /**
- * The chain of dependent nodes with the largest total duration: the jobs that
- * decided how long the run took.
+ * The chain of dependent jobs with the largest total duration: the jobs that
+ * decided how long the run took. It is found over GitHub's cards, so a
+ * collapsed cluster keeps the chain inside it, and then mapped onto the
+ * displayed nodes. `seconds` is the chain's total.
  */
 export function criticalPath(
   view: ViewGraph,
   now: number,
-): { nodes: Set<string>; edges: Set<string> } {
-  const weight = new Map(view.nodes.map((n) => [n.id, nodeSeconds(n, now)]));
+): { nodes: Set<string>; edges: Set<string>; seconds: number } {
+  const { jobs, edges: cardEdges, owner } = view.timing;
+  const weight = new Map([...jobs].map(([id, list]) => [id, jobsSeconds(list, now)]));
   const preds = new Map<string, string[]>();
-  const indegree = new Map<string, number>(view.nodes.map((n) => [n.id, 0]));
+  const indegree = new Map<string, number>([...weight.keys()].map((id) => [id, 0]));
   const succs = new Map<string, string[]>();
-  for (const { from, to } of view.allEdges) {
-    if (!weight.has(from) || !weight.has(to)) continue;
+  for (const { from, to } of cardEdges) {
     (preds.get(to) ?? preds.set(to, []).get(to))?.push(from);
     (succs.get(from) ?? succs.set(from, []).get(from))?.push(to);
     indegree.set(to, (indegree.get(to) ?? 0) + 1);
@@ -357,13 +380,16 @@ export function criticalPath(
 
   const nodes = new Set<string>();
   const edges = new Set<string>();
-  if (endTotal <= 0) return { nodes, edges };
+  if (endTotal <= 0) return { nodes, edges, seconds: 0 };
   let cursor = end;
   while (cursor !== undefined) {
-    nodes.add(cursor);
+    const node = owner.get(cursor);
+    if (node !== undefined) nodes.add(node);
     const prev: string | undefined = best.get(cursor)?.prev;
-    if (prev !== undefined) edges.add(`${prev}\n${cursor}`);
+    const prevNode = prev === undefined ? undefined : owner.get(prev);
+    if (prevNode !== undefined && node !== undefined && prevNode !== node)
+      edges.add(`${prevNode}\n${node}`);
     cursor = prev;
   }
-  return { nodes, edges };
+  return { nodes, edges, seconds: endTotal };
 }

@@ -67,4 +67,6 @@ export interface RunGraph {
   trigger?: string;
   cards: Card[];
   edges: Edge[];
+  /** The run's own status from the summary next to the graph, when BGAV can read it. */
+  runStatus?: Status;
 }
