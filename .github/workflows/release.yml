@@ -1,0 +1,116 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bgav-release
+  queue: max
+
+jobs:
+  package:
+    name: Validate tag and package extension
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      tag: ${{ steps.tagsmith.outputs.tag }}
+      version: ${{ steps.tagsmith.outputs.version }}
+      commit: ${{ steps.tagsmith.outputs.commit }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: jdx/mise-action@v5
+      - run: pnpm install --frozen-lockfile
+      - name: Validate the annotated tag against origin
+        id: tagsmith
+        run: pnpm exec tagsmith validate --tag "$GITHUB_REF_NAME" --github-output
+      - name: Verify the release commit
+        env:
+          RELEASE_COMMIT: ${{ steps.tagsmith.outputs.commit }}
+        run: |
+          test "$(git rev-parse HEAD)" = "$RELEASE_COMMIT"
+          git merge-base --is-ancestor "$RELEASE_COMMIT" origin/main
+      - run: pnpm check
+      - name: Build the versioned ZIP
+        env:
+          BGAV_RELEASE_VERSION: ${{ steps.tagsmith.outputs.version }}
+        run: pnpm zip
+      - uses: actions/upload-artifact@v7
+        with:
+          name: extension-zip
+          path: bgav-${{ steps.tagsmith.outputs.version }}.zip
+          if-no-files-found: error
+
+  github:
+    name: Publish GitHub Release
+    needs: package
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: extension-zip
+      - name: Publish the release ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ needs.package.outputs.tag }}
+          ZIP_NAME: bgav-${{ needs.package.outputs.version }}.zip
+        run: |
+          if ! gh release view "$RELEASE_TAG" > /dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" --verify-tag --title "$RELEASE_TAG" --generate-notes --draft
+          fi
+          assets=$(gh release view "$RELEASE_TAG" --json assets --jq '.assets[] | select(.state == "uploaded") | .name')
+          if ! grep -Fxq "$ZIP_NAME" <<< "$assets"; then
+            gh release upload "$RELEASE_TAG" "$ZIP_NAME"
+          fi
+          is_draft=$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)
+          if [[ "$is_draft" == true ]]; then
+            gh release edit "$RELEASE_TAG" --draft=false
+          fi
+
+  chrome:
+    name: Submit to Chrome Web Store
+    needs: [package, github]
+    if: ${{ vars.CHROME_WEB_STORE_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.package.outputs.commit }}
+          persist-credentials: false
+      - uses: jdx/mise-action@v5
+      - name: Download the GitHub Release ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ needs.package.outputs.tag }}
+          ZIP_NAME: bgav-${{ needs.package.outputs.version }}.zip
+        run: gh release download "$RELEASE_TAG" --pattern "$ZIP_NAME"
+      - name: Authenticate to Google Cloud
+        id: google
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          workload_identity_provider: ${{ vars.CHROME_WEB_STORE_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.CHROME_WEB_STORE_SERVICE_ACCOUNT }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/chromewebstore
+          create_credentials_file: false
+      - name: Submit the release ZIP for review
+        env:
+          CWS_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
+          CWS_PUBLISHER_ID: ${{ vars.CHROME_WEB_STORE_PUBLISHER_ID }}
+          CWS_ITEM_ID: ${{ vars.CHROME_WEB_STORE_ITEM_ID }}
+          RELEASE_VERSION: ${{ needs.package.outputs.version }}
+        run: node scripts/publish-chrome.ts "$RELEASE_VERSION"

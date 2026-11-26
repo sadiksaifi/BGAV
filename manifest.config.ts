@@ -1,12 +1,23 @@
 import { defineManifest } from "@crxjs/vite-plugin";
 import pkg from "./package.json" with { type: "json" };
 
+const releaseVersion = process.env.BGAV_RELEASE_VERSION;
+
+if (
+  releaseVersion !== undefined &&
+  (!/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(releaseVersion) ||
+    releaseVersion === "0.0.0" ||
+    releaseVersion.split(".").some((part) => Number(part) > 65535))
+) {
+  throw new Error(`Invalid Chrome release version: ${releaseVersion}`);
+}
+
 export default defineManifest({
   manifest_version: 3,
   name: "BGAV: Better GitHub Actions Visualizer",
   short_name: "BGAV",
   description: pkg.description,
-  version: pkg.version,
+  version: releaseVersion ?? "0.0.0.1",
   homepage_url: "https://github.com/sadiksaifi/BGAV",
   // color-mix() and Array#toSorted need Chrome 111 or later.
   minimum_chrome_version: "111",
