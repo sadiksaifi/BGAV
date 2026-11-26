@@ -4,8 +4,8 @@ From an up-to-date `main`, preview and push the first release tag with TagSmith.
 
 ```sh
 pnpm install --frozen-lockfile
-pnpm exec tagsmith tag --channel stable --version 0.1.0 --dry-run --json
-pnpm exec tagsmith tag --channel stable --version 0.1.0 --push
+pnpm release --channel stable --version 0.1.0 --dry-run --json
+pnpm release --channel stable --version 0.1.0 --push
 ```
 
 For later releases, use `--bump patch`, `--bump minor`, or `--bump major` in place of `--version 0.1.0`. GitHub Actions validates the tag, runs the checks, and attaches the packaged extension to its GitHub Release. Local builds use the development manifest version `0.0.0.1`.

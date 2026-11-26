@@ -14,7 +14,7 @@ concurrency:
 jobs:
   package:
     name: Validate tag and package extension
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
     outputs:
       tag: ${{ steps.tagsmith.outputs.tag }}
@@ -50,7 +50,7 @@ jobs:
   github:
     name: Publish GitHub Release
     needs: package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 5
     permissions:
       contents: write
@@ -81,7 +81,7 @@ jobs:
     name: Submit to Chrome Web Store
     needs: [package, github]
     if: ${{ vars.CHROME_WEB_STORE_ENABLED == 'true' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
     permissions:
       contents: read

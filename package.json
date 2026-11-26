@@ -16,7 +16,8 @@
     "preview": "node scripts/preview.ts",
     "gen:octicons": "node scripts/gen-octicons.ts && oxfmt src/view/octicons.ts",
     "gen:icons": "node scripts/gen-icons.ts",
-    "zip": "pnpm build && node scripts/zip.ts"
+    "zip": "pnpm build && node scripts/zip.ts",
+    "release": "tagsmith tag"
   },
   "dependencies": {
     "elkjs": "^0.12.1"
