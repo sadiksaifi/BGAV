@@ -1,0 +1,146 @@
+name: Publish release
+
+on: workflow_call
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+concurrency:
+  group: bgav-release
+  queue: max
+
+jobs:
+  package:
+    name: Validate tag and package extension
+    if: github.event_name == 'push' && github.ref_type == 'tag' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-26.04
+    timeout-minutes: 10
+    outputs:
+      tag: ${{ steps.tagsmith.outputs.tag }}
+      version: ${{ steps.tagsmith.outputs.version }}
+      commit: ${{ steps.tagsmith.outputs.commit }}
+      sha256: ${{ steps.zip.outputs.sha256 }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Require the tag to point to a commit on main
+        run: git merge-base --is-ancestor HEAD origin/main
+      - uses: jdx/mise-action@v5
+      - run: pnpm install --frozen-lockfile
+      - name: Validate the annotated tag against origin
+        id: tagsmith
+        run: pnpm exec tagsmith validate --tag "$GITHUB_REF_NAME" --github-output
+      - name: Verify the release commit
+        env:
+          RELEASE_COMMIT: ${{ steps.tagsmith.outputs.commit }}
+        run: test "$(git rev-parse HEAD)" = "$RELEASE_COMMIT"
+      - run: pnpm check
+      - name: Build the versioned ZIP
+        id: zip
+        env:
+          BGAV_RELEASE_VERSION: ${{ steps.tagsmith.outputs.version }}
+        run: |
+          pnpm zip
+          checksum=$(sha256sum "bgav-$BGAV_RELEASE_VERSION.zip")
+          echo "sha256=${checksum%% *}" >> "$GITHUB_OUTPUT"
+      - uses: actions/upload-artifact@v7
+        with:
+          name: extension-zip
+          path: bgav-${{ steps.tagsmith.outputs.version }}.zip
+          if-no-files-found: error
+          overwrite: true
+
+  github:
+    name: Publish GitHub Release
+    needs: package
+    runs-on: ubuntu-26.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: extension-zip
+      - name: Publish the release ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ needs.package.outputs.tag }}
+          ZIP_NAME: bgav-${{ needs.package.outputs.version }}.zip
+          ZIP_SHA256: ${{ needs.package.outputs.sha256 }}
+        run: |
+          printf '%s  %s\n' "$ZIP_SHA256" "$ZIP_NAME" | sha256sum -c -
+          if ! gh release view "$RELEASE_TAG" > /dev/null 2>&1; then
+            gh release create "$RELEASE_TAG" --verify-tag --title "$RELEASE_TAG" --generate-notes --draft
+          fi
+
+          release=$(gh release view "$RELEASE_TAG" --json databaseId,isDraft)
+          release_id=$(jq -er '.databaseId' <<< "$release")
+          release_asset() {
+            gh api --paginate "repos/$GH_REPO/releases/$release_id/assets?per_page=100" |
+              jq -sc --arg name "$ZIP_NAME" '[.[][] | select(.name == $name)] | first // {}'
+          }
+          asset=$(release_asset)
+          state=$(jq -r '.state // ""' <<< "$asset")
+          if [[ "$state" == starter ]]; then
+            asset_id=$(jq -er '.id' <<< "$asset")
+            gh api --method DELETE "repos/$GH_REPO/releases/assets/$asset_id"
+          fi
+          if [[ "$state" != uploaded ]]; then
+            gh release upload "$RELEASE_TAG" "$ZIP_NAME"
+            asset=$(release_asset)
+          fi
+          if ! jq -e --arg digest "sha256:$ZIP_SHA256" '.state == "uploaded" and .digest == $digest' <<< "$asset" > /dev/null; then
+            echo "::error::GitHub Release asset $ZIP_NAME does not match the CI build."
+            exit 1
+          fi
+          if [[ "$(jq -r '.isDraft' <<< "$release")" == true ]]; then
+            gh release edit "$RELEASE_TAG" --draft=false
+          fi
+
+  chrome:
+    name: Submit to Chrome Web Store
+    needs: [package, github]
+    if: ${{ vars.CHROME_WEB_STORE_ENABLED == 'true' }}
+    runs-on: ubuntu-26.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.package.outputs.commit }}
+          persist-credentials: false
+      - uses: jdx/mise-action@v5
+      - name: Download and verify the GitHub Release ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ needs.package.outputs.tag }}
+          ZIP_NAME: bgav-${{ needs.package.outputs.version }}.zip
+          ZIP_SHA256: ${{ needs.package.outputs.sha256 }}
+        run: |
+          gh release download "$RELEASE_TAG" --pattern "$ZIP_NAME"
+          printf '%s  %s\n' "$ZIP_SHA256" "$ZIP_NAME" | sha256sum -c -
+      - name: Authenticate to Google Cloud
+        id: google
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3
+        with:
+          workload_identity_provider: ${{ vars.CHROME_WEB_STORE_IDENTITY_PROVIDER }}
+          service_account: ${{ vars.CHROME_WEB_STORE_SERVICE_ACCOUNT }}
+          token_format: access_token
+          access_token_scopes: https://www.googleapis.com/auth/chromewebstore
+          create_credentials_file: false
+      - name: Submit the release ZIP for review
+        env:
+          CWS_ACCESS_TOKEN: ${{ steps.google.outputs.access_token }}
+          CWS_PUBLISHER_ID: ${{ vars.CHROME_WEB_STORE_PUBLISHER_ID }}
+          CWS_ITEM_ID: ${{ vars.CHROME_WEB_STORE_ITEM_ID }}
+          RELEASE_VERSION: ${{ needs.package.outputs.version }}
+        run: node scripts/publish-chrome.ts "$RELEASE_VERSION"
