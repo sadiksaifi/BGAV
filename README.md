@@ -21,6 +21,10 @@
 - **Navigation**: Zoom, pan, fit, full screen, an overview map and keyboard shortcuts. The menu lists the keys.
 - **GitHub's graph is one click away**: Switch back from the menu at any time. If GitHub changes its markup and BGAV cannot read a page, it shows GitHub's graph instead.
 
+## Releasing
+
+Pushing a stable [TagSmith](https://tagsmith.site/) tag builds the extension and publishes a GitHub Release. The tag supplies the version in the manifest and ZIP filename. See the [release guide](docs/releasing.md) for the first Chrome Web Store submission and automated updates.
+
 ## License
 
 BGAV is open source under the [MIT License](LICENSE). It bundles [elkjs](https://github.com/kieler/elkjs) under [EPL-2.0](https://www.eclipse.org/legal/epl-2.0/) and GitHub's [Octicons](https://github.com/primer/octicons) under MIT.
